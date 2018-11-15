@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style/userform.css"/>
+		<title>Prise de Rendez-vous</title>
+    </head>
+	<body>
+		<form action="http://localhost:8080/projetWeb/servlet/ResultatFormulaire" method="post">
+			<div>
+				<p>Nom:</p>
+        		<input type="text" size="40" name="nom" value="" placeholder="Nom" required>           
+			</div>
+			<div>
+				<p>Prénom</p>
+				<input type="text" size="40" name="prenom" value="" placeholder="Prénom" required>
+			</div>
+			<div>
+				<p>Email</p>
+				<input type="text" size="40" name="email" value="" placeholder="Email">
+			</div>
+			<div>
+				<p>Téléphone</p>
+				<input type="text" size="40" name="telephone" value="" placeholder="Telephone">
+			</div>
+			<div>
+				<h4>Comment préferez vous être rappeler ?</h4>
+				<input type="radio" name="preferenceRappel" value="Reponse par Telephone">Téléphone
+				<br>
+				<input type="radio" name="preferenceRappel" value="Reponse par Email">Email
+			</div>
+			<div>
+				<h4>Quelles sont vos jours disponibles ?</h4>
+				<input type="checkbox" name="preferenceLundi" value="Lundi">Lundi  
+				<input type="checkbox" name="preferenceMardi" value="Mardi">Mardi
+				<input type="checkbox" name="preferenceMercredi" value="Mercredi">Mercredi
+				<input type="checkbox" name="preferenceJeudi" value="Jeudi">Jeudi
+				<input type="checkbox" name="preferenceVendredi" value="Vendredi">Vendredi
+				<input type="checkbox" name="preferenceSamedi" value="Samedi">Samedi
+			</div>
+			<div>
+				<h4>Quel est le meilleur moment pour votre rendez-vous ?</h4>
+				<input type="checkbox" name="preferenceMatin" value="Matin">Matin
+				<br>
+				<input type="checkbox" name="preferenceAprem" value="Apres-midi">Après-Midi
+			</div>
+			<br>
+			<div>
+				<input type="submit" value="Valider">
+			</div>
+			<br>
+		</form>
+	</body>
+</html>
