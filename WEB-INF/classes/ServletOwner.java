@@ -25,6 +25,7 @@ public class ServletOwner extends HttpServlet
 	out.println("<head> <meta charset=utf-8/>");
 	out.println("<link rel=\"stylesheet\" type=\"text/css\" href='"+req.getContextPath()+"/style/loginOwner.css' />");
 	out.println("</head><body>");
+
 	
 
 	try {
@@ -47,10 +48,9 @@ public class ServletOwner extends HttpServlet
 		 }
 		
 		 if(identifiant.equals(id) && password.equals(pass)){
-	  
+		    
 		     out.println("<header><h1>BIENVENUE "+identifiant.toUpperCase()+"</h1></header><main> ");
 
-		     
 		     out.println("<section><img src=\"image/parametre.png\" alt=\"[roue]\" /></section>");
 		     
 		     out.println("<section class=\"button\"><form  name=\"configuration\" method=\"get\" action=\"configuaration.html\">");
@@ -60,11 +60,12 @@ public class ServletOwner extends HttpServlet
 		     out.println("<input  class=\"button2\" type=\"submit\"  name=\"resultat\" value=\"Historique\"></section>");
 		     
 		 }else{
-	   
-		     out.println("<h1>ERREUR !!!!</h1> ");
-		     out.println("<br><br><br><br><br><br>");
+		   
+		     out.println("<header><h1>ERREUR !!!!</h1></header><main> ");
+		     out.println("<section class=\"button\"><p class=\"message\">Identifiant et/ou Password INCORRECTE !!!</p>");
+		     
 		     out.println("<form name=\"loginOwner\" method=\"get\" action=\"loginOwner.html\">");
-		     out.println("<input type=\"submit\"  name=\"réessayer\" value=\"RÉESAYER\">");
+		     out.println("<input class=\"button3\" type=\"submit\"  name=\"réesayer\" value=\"Connexion\"></section>");
 		    
 		 }
     
