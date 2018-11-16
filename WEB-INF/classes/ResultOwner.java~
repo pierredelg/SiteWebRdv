@@ -5,27 +5,24 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import java.sql.*;
 
-@WebServlet("/servletOwner")
-public class ServletOwner extends HttpServlet
+@WebServlet("/resultOwner")
+public class ResultOwner extends HttpServlet
 {
 
     
     public void doGet( HttpServletRequest req, HttpServletResponse res ) 
 	throws ServletException, IOException
     {
-
-	String identifiant = req.getParameter("identifiant");
-	String password = req.getParameter("password");
-	String id = "";
-	String pass = "";
-
+	
 	PrintWriter out = res.getWriter();  
 	res.setContentType( "text/html" );
 	out.println("<!doctype html>");
 	out.println("<head> <meta charset=utf-8/>");
 	out.println("<link rel=\"stylesheet\" type=\"text/css\" href='"+req.getContextPath()+"/style/loginOwner.css' />");
 	out.println("</head><body>");
-
+	out.println("<header><h1>DÉTAIL DES RENDEZ-VOUS</h1></header><main>");
+	out.println("<div><table>");
+	out.println("<tr><th>IDENTIFIANT</th><th>PASSWORD</th></tr>");
 	
 
 	try {
@@ -43,34 +40,16 @@ public class ServletOwner extends HttpServlet
 		 ResultSet rs = stat.executeQuery( "SELECT * FROM utilisateurs;" );
 		
 		 while(rs.next()){
-		     id = rs.getString("identifiant");
-		     pass = rs.getString("password");
-		 }
-		
-		 if(identifiant.equals(id) && password.equals(pass)){
-		    
-		     out.println("<header><h1>BIENVENUE "+identifiant.toUpperCase()+"</h1></header><main> ");
-
-		     out.println("<section><img src=\"image/parametre.png\" alt=\"[roue]\" /></section>");
-		     out.println("<input type=\"hidden\" name=\"infos\" value="+pass+">");
-		     
-		     out.println("<section class=\"button\"><form  name=\"configuration\" method=\"get\"  action=\"http://localhost:8080/projetWeb/resultOwner\">");
-		     out.println("<button class=\"button1\">Configuration</button>");
-		     out.println("<button class=\"button2\">Historique</button></section>");
-		     
-		 }else{
-		   
-		     out.println("<header><h1>ERREUR !!!!</h1></header><main> ");
-		     out.println("<section class=\"button\"><p class=\"message\">Identifiant et/ou Password INCORRECTE !!!</p>");	     
-		     out.println("<form name=\"loginOwner\" method=\"get\" action=\"loginOwner.html\">");
-		     out.println("<button class=\"button3\">CONNEXION</button></section>");
-		    
+		    String id = rs.getString("identifiant");
+		    String pass = rs.getString("password");
+		     out.println("<tr><td>"+id+"</td><td>"+pass+"</td></tr>");
 		 }
     
 		 rs.close();
 		 stat.close();
 		 conn.close();
 	    }
+	    
 	}catch (ClassNotFoundException ex) {
 	    ex.printStackTrace();
 	}
@@ -78,6 +57,9 @@ public class ServletOwner extends HttpServlet
 	    ex.printStackTrace();
 	}
 
+	
+
+	out.println("</table></div>");
 	out.println("</main><footer></footer>");   
 	out.println("</body></html> ");
     }

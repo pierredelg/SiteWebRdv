@@ -4,20 +4,22 @@ body{
 }
 
 body>header, body>footer{
-	position:fixed;
-	width:100%;
-	margin:0;
-	padding:0px;
-	background-color:black;
-	text-align:center;
-	height:80px;
+    position:fixed;
+    width:100%;
+    margin:0;
+    padding:0px;
+    background-color:black;
+    height:80px;
 }
 
 body>header{
-	top:0;
+    top:0;
+    text-align:center;
 }
+
 body>footer{
-	bottom:0;
+    bottom:0;
+    text-align:right;
 }
 
 main{
@@ -45,20 +47,7 @@ h1{
     color: white;
 }
 
-.message{
-    text-decoration: blink;
-}
-
-p{
-    
-    text-align: center;
-    font-weight: bold;
-    font-family: script;
-    margin-top:14%;
-    font-size:2em;
-}
-
-input {
+button {
     background-color: grey;
     border-width: 8px;
     border-color: black;
@@ -72,25 +61,30 @@ input {
     font-size: 22px;
 }
 
+button:hover {
+    background-color: #4C4343; /* Green */
+    color: white;
+}
+
 input:hover {
     background-color: #4C4343; /* Green */
     color: white;
 }
 
-input.button1{
+.button1{
 
     margin-left: 20%;    
 }
 
 
-input.button2{
+.button2{
     
     float:right;
     margin-right: 20%;    
 }
 
 
-input.button3{
+.button3{
 
     display: block;
     margin-left: auto;
@@ -99,5 +93,61 @@ input.button3{
     
 }
 
+p{
+    
+    text-align: center;
+    font-weight: bold;
+    font-family: script;
+    margin-top:14%;
+    font-size:2em;
+    color: red;
+}
 
+.result{
+    background-color: orange;
+}
 
+table{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+
+th{
+
+    font-size: 1.8em;
+    background-color: blue;
+    padding: 10px;
+}
+
+table,th{
+   
+    border: 2px solid black;
+}
+
+td
+{
+    margin: 8px;
+    border: 3px solid red;
+    color: black;
+    font-size: 1.8em;
+    text-align: center;
+    font-family: "Times New Roman";
+    background-color: white;
+    
+}
+
+.out{
+    
+    background-color: red;
+    border-width: 0px;
+    border-color: black;
+    border-radius: 24px;
+    color: white;
+    text-align: right;
+    font-weight: bold;
+    padding: 14px 6px;
+    font-size: 1em;
+    margin-right: 2%;
+    margin-top: 0.8%;
+}
