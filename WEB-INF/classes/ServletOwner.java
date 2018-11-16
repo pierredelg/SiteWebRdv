@@ -23,8 +23,8 @@ public class ServletOwner extends HttpServlet
 	res.setContentType( "text/html" );
 	out.println("<!doctype html>");
 	out.println("<head> <meta charset=utf-8/>");
-	out.println("<link rel=\"stylesheet\" type=\"text/css\" href='"+req.getContextPath()+"/loginOwner.css' />");
-	out.println("</head><body><center> <br><br><br>");
+	out.println("<link rel=\"stylesheet\" type=\"text/css\" href='"+req.getContextPath()+"/style/loginOwner.css' />");
+	out.println("</head><body>");
 	
 
 	try {
@@ -48,16 +48,16 @@ public class ServletOwner extends HttpServlet
 		
 		 if(identifiant.equals(id) && password.equals(pass)){
 	  
-		     out.println("<h1>BIENVENUE "+identifiant+"</h1> ");
+		     out.println("<header><h1>BIENVENUE "+identifiant.toUpperCase()+"</h1></header><main> ");
 
 		     
-		     out.println("<br><br><br><br><br><br><p>");
-		     out.println("<div><form name=\"configuration\" method=\"get\" action=\"configuaration.html\">");
-		     out.println("<input type=\"submit\"  name=\"configuration\" value=\"Configuration\"></div>");
+		     out.println("<section><img src=\"image/parametre.png\" alt=\"[roue]\" /></section>");
 		     
-		     out.println("<br><br><br><br><br><br>");
-		     out.println("<div><form name=\"servletResultat\" method=\"get\" action=\"http://localhost:8080/projetWeb/servletResultat\">");
-		     out.println("<input type=\"submit\"  name=\"resultat\" value=\"Historique\"></div>");
+		     out.println("<section class=\"button\"><form  name=\"configuration\" method=\"get\" action=\"configuaration.html\">");
+		     out.println("<input  class=\"button1\" type=\"submit\"  name=\"configuration\" value=\"Configuration\">");
+		     
+		     out.println("<form  name=\"servletResultat\" method=\"get\" action=\"http://localhost:8080/projetWeb/servletResultat\">");
+		     out.println("<input  class=\"button2\" type=\"submit\"  name=\"resultat\" value=\"Historique\"></section>");
 		     
 		 }else{
 	   
@@ -83,7 +83,7 @@ public class ServletOwner extends HttpServlet
 	
 
 
-	out.println("<br></center>");   
+	out.println("</main><footer></footer>");   
 	out.println("</body></html> ");
     }
 }
