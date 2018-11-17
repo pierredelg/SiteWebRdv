@@ -24,9 +24,7 @@ public class ServletOwner extends HttpServlet
 	out.println("<!doctype html>");
 	out.println("<head> <meta charset=utf-8/>");
 	out.println("<link rel=\"stylesheet\" type=\"text/css\" href='"+req.getContextPath()+"/style/loginOwner.css' />");
-	out.println("</head><body>");
 
-	
 
 	try {
 	    // On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
@@ -48,7 +46,7 @@ public class ServletOwner extends HttpServlet
 		 }
 		
 		 if(identifiant.equals(id) && password.equals(pass)){
-		    
+		     out.println("</head><body>");
 		     out.println("<header><h1>BIENVENUE "+identifiant.toUpperCase()+"</h1></header><main> ");
 
 		     out.println("<section><img src=\"image/parametre.png\" alt=\"[roue]\" /></section>");
@@ -59,7 +57,7 @@ public class ServletOwner extends HttpServlet
 		     out.println("<button class=\"button2\">Historique</button></section>");
 		     
 		 }else{
-		   
+		     out.println("</head><body class=\"result\">");
 		     out.println("<header><h1>ERREUR !!!!</h1></header><main> ");
 		     out.println("<section class=\"button\"><p class=\"message\">Identifiant et/ou Password INCORRECTE !!!</p>");	     
 		     out.println("<form name=\"loginOwner\" method=\"get\" action=\"loginOwner.html\">");

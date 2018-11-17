@@ -1,6 +1,6 @@
 body{
-
-    background-color: white;
+    background-color:white;
+    
 }
 
 body>header, body>footer{
@@ -89,7 +89,7 @@ input:hover {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10%;
+    margin-top: 16%;
     
 }
 
@@ -99,12 +99,19 @@ p{
     font-weight: bold;
     font-family: script;
     margin-top:14%;
-    font-size:2em;
+    font-size:3em;
     color: red;
+    text-decoration: blink;
 }
 
 .result{
-    background-color: orange;
+    background-image: url("../image/fond2.jpeg");
+    background-repeat:no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size:cover;
+    margin-bottom:auto;
+    margin-top:auto;
 }
 
 table{
@@ -128,7 +135,7 @@ table,th{
 td
 {
     margin: 8px;
-    border: 3px solid red;
+    border: 3px solid green;
     color: black;
     font-size: 1.8em;
     text-align: center;
@@ -137,6 +144,7 @@ td
     
 }
 
+/*bouton log out */
 .out{
     
     background-color: red;
