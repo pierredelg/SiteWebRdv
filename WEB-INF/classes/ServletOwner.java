@@ -23,8 +23,7 @@ public class ServletOwner extends HttpServlet
 	res.setContentType( "text/html" );
 	out.println("<!doctype html>");
 	out.println("<head> <meta charset=utf-8/>");
-	out.println("<link rel=\"stylesheet\" type=\"text/css\" href='"+req.getContextPath()+"/style/loginOwner.css' />");
-
+	out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"/projetWeb/style/loginOwner.css\" />");
 
 	try {
 	    // On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
@@ -51,10 +50,10 @@ public class ServletOwner extends HttpServlet
 
 		     out.println("<section><img src=\"image/parametre.png\" alt=\"[roue]\" /></section>");
 		     out.println("<input type=\"hidden\" name=\"infos\" value="+pass+">");
+		     out.println("<section class=\"button\"><button class=\"button1\">Configuration</button>");
+		     out.println("<form  name=\"configuration\" method=\"get\"  action=\"http://localhost:8080/projetWeb/resultOwner\">");
 		     
-		     out.println("<section class=\"button\"><form  name=\"configuration\" method=\"get\"  action=\"http://localhost:8080/projetWeb/resultOwner\">");
-		     out.println("<button class=\"button1\">Configuration</button>");
-		     out.println("<button class=\"button2\">Historique</button></section>");
+		     out.println("<button class=\"button2\">Historique</button></form></section>");
 		     
 		 }else{
 		     out.println("</head><body class=\"result\">");
