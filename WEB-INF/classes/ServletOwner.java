@@ -27,47 +27,47 @@ public class ServletOwner extends HttpServlet
 
 
 	try {
+	   
 	    // On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
 	    Class.forName("org.sqlite.JDBC");
-	    String dbURL =  "jdbc:sqlite:./data.db";
+	    String dbURL =  "jdbc:sqlite://localhost:8080/projetWeb/data.db";
 	    //On essaye de se connecter à la base
 	    Connection conn = DriverManager.getConnection(dbURL);
 	    if (conn != null) {
-		
 		// un Statement est une interface qui représente une instruction SQL
-		 Statement stat = conn.createStatement();
+		Statement stat = conn.createStatement();
 		
-		 // le resultat du select est mis dans un ResultSet
-		 ResultSet rs = stat.executeQuery( "SELECT * FROM utilisateurs;" );
+		// le resultat du select est mis dans un ResultSet
+		ResultSet rs = stat.executeQuery( "SELECT * FROM utilisateurs;" );
 		
-		 while(rs.next()){
-		     id = rs.getString("identifiant");
-		     pass = rs.getString("password");
-		 }
+		while(rs.next()){
+		    id = rs.getString("identifiant");
+		    pass = rs.getString("password");
+		}
 		
-		 if(identifiant.equals(id) && password.equals(pass)){
-		     out.println("</head><body>");
-		     out.println("<header><h1>BIENVENUE "+identifiant.toUpperCase()+"</h1></header><main> ");
+		if(identifiant.equals(id) && password.equals(pass)){
+		    out.println("</head><body>");
+		    out.println("<header><h1>BIENVENUE "+identifiant.toUpperCase()+"</h1></header><main> ");
 
-		     out.println("<section><img src=\"image/parametre.png\" alt=\"[roue]\" /></section>");
-		     out.println("<input type=\"hidden\" name=\"infos\" value="+pass+">");
+		    out.println("<section><img src=\"image/parametre.png\" alt=\"[roue]\" /></section>");
+		    out.println("<input type=\"hidden\" name=\"infos\" value="+pass+">");
 		     
-		     out.println("<section class=\"button\"><form  name=\"configuration\" method=\"get\"  action=\"http://localhost:8080/projetWeb/resultOwner\">");
-		     out.println("<button class=\"button1\">Configuration</button>");
-		     out.println("<button class=\"button2\">Historique</button></section>");
+		    out.println("<section class=\"button\"><form  name=\"configuration\" method=\"get\"  action=\"http://localhost:8080/projetWeb/resultOwner\">");
+		    out.println("<button class=\"button1\">Configuration</button>");
+		    out.println("<button class=\"button2\">Historique</button></section>");
 		     
-		 }else{
-		     out.println("</head><body class=\"result\">");
-		     out.println("<header><h1>ERREUR !!!!</h1></header><main> ");
-		     out.println("<section class=\"button\"><p class=\"message\">Identifiant et/ou Password INCORRECTE !!!</p>");	     
-		     out.println("<form name=\"loginOwner\" method=\"get\" action=\"loginOwner.html\">");
-		     out.println("<button class=\"button3\">CONNEXION</button></section>");
+		}else{
+		    out.println("</head><body class=\"result\">");
+		    out.println("<header><h1>ERREUR !!!!</h1></header><main> ");
+		    out.println("<section class=\"button\"><p class=\"message\">Identifiant et/ou Password INCORRECTE !!!</p>");	     
+		    out.println("<form name=\"loginOwner\" method=\"get\" action=\"loginOwner.html\">");
+		    out.println("<button class=\"button3\">CONNEXION</button></section>");
 		    
-		 }
+		}
     
-		 rs.close();
-		 stat.close();
-		 conn.close();
+		rs.close();
+		stat.close();
+		conn.close();
 	    }
 	}catch (ClassNotFoundException ex) {
 	    ex.printStackTrace();
