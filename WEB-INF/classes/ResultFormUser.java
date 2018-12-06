@@ -1,4 +1,3 @@
-// Servlet Test.java  de test de la configuration
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -32,10 +31,12 @@ public class ResultFormUser extends HttpServlet
 
     out.println("<!doctype html>");
     out.println("<head>");
+    out.println("<link rel=\"stylesheet\" href=\"/projetWeb/style/resultform.css\"/>");
     out.println("<title>Resultat du Formulaire</title>");
     out.println("</head>");
     out.println("<body>");
     out.println("<h1>Servlet ResultatFormulaire</h1> ");
+    out.println("<section>");
     out.println("<br>");
     out.println("Bonjour ");
     out.println("<br>");
@@ -65,6 +66,7 @@ public class ResultFormUser extends HttpServlet
     out.println("<br>");
     out.println("preferenceAprem = " + preferenceAprem);
     out.println("<br>");
+    out.println("</section>");
     try {
 // On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
       Class.forName("org.sqlite.JDBC");
