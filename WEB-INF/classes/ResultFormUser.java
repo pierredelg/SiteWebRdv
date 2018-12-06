@@ -3,6 +3,7 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
+import java.sql.*;
 
 @WebServlet("/servlet/ResultatFormulaire")
 public class ResultFormUser extends HttpServlet
@@ -79,10 +80,10 @@ public class ResultFormUser extends HttpServlet
         stat.executeUpdate("insert into client values(" + nom + "," + prenom +"," + email +"," + telephone + "," + preferenceRappel + " );");
         ResultSet rs = stat.executeQuery( "SELECT num FROM client where nom=" + nom +" and prenom="+ prenom +";" );
         String idClient = rs.getString("num");
-        stat.executeUpdate("insert into rendezvous values("idClient + "," + lundi + "," + prenom +"," + email +"," + telephone + "," + preferenceRappel + " );");
+        stat.executeUpdate("insert into rendezvous values(" + idClient + " );");
 
 // le resultat du select est mis dans un ResultSet
-        ResultSet rs = stat.executeQuery( "SELECT * FROM client;" );
+        rs = stat.executeQuery( "SELECT * FROM client;" );
         
         while ( rs.next() ) {
           int idjava = rs.getInt("num");
