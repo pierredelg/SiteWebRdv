@@ -28,7 +28,7 @@ public class ResultOwner extends HttpServlet
 	try {
 	    // On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
 	    Class.forName("org.sqlite.JDBC");
-	    String dbURL =  "jdbc:sqlite:./data.db";
+	    String dbURL =  "jdbc:sqlite:../webapps/projetWeb/BDD/data.db";
 	    //On essaye de se connecter à la base
 	    Connection conn = DriverManager.getConnection(dbURL);
 	    if (conn != null) {

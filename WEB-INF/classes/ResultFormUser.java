@@ -68,11 +68,11 @@ public class ResultFormUser extends HttpServlet
     try {
 // On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
       Class.forName("org.sqlite.JDBC");
-      String dbURL = "jdbc:sqlite:./data.db";
+      String dbURL = "jdbc:sqlite:../webapps/projetWeb/BDD/data.db";
 //On essaye de se connecter à la base
       Connection conn = DriverManager.getConnection(dbURL);
       if (conn != null) {
-        System.out.println("Connected to the database");
+        out.println("Connected to the database");
 // un Statement est une interface qui représente une instruction SQL
         Statement stat = conn.createStatement();
 // On exécute les requêtes, attention à la différence entre executeUpdate et executeQuery
@@ -84,7 +84,7 @@ public class ResultFormUser extends HttpServlet
 
 // le resultat du select est mis dans un ResultSet
         rs = stat.executeQuery( "SELECT * FROM client;" );
-        
+//On récupere chaque information de la base        
         while ( rs.next() ) {
           int idjava = rs.getInt("num");
           String nomjava = rs.getString("nom");
@@ -94,6 +94,7 @@ public class ResultFormUser extends HttpServlet
           String preferenceRappeljava = rs.getString("preferenceRappel");
           out.println( "ID = " + idjava+" Prenom = "+prenomjava+" Nom = "+nomjava + " email = "+ emailjava + " tel ="+ telephonejava + "preference de Rappel = " + preferenceRappeljava );
         }
+        
 // On ferme les connexions au ResultSet, Statement et à la base
         rs.close();
         stat.close();
