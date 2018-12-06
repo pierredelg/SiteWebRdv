@@ -7,9 +7,9 @@ body>header, body>footer{
     position:fixed;
     width:100%;
     margin:0;
-    padding:0px;
+  //  padding:0px;
     background-color:black;
-    height:80px;
+    height:12%;
 }
 
 body>header{
@@ -81,7 +81,6 @@ input:hover {
     
     float:right;
     margin-right: 20%;
-    position:relative;
     bottom:108px; 
 }
 
