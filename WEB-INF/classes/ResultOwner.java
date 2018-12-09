@@ -5,12 +5,12 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import java.sql.*;
 
-@WebServlet("/resultOwner")
+@WebServlet("/historiqueOwner")
 public class ResultOwner extends HttpServlet
 {
 
     
-    public void doGet( HttpServletRequest req, HttpServletResponse res ) 
+    public void doPost( HttpServletRequest req, HttpServletResponse res ) 
 	throws ServletException, IOException
     {
 	

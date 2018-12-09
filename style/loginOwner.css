@@ -6,15 +6,54 @@ body{
 body>header, body>footer{
     position:fixed;
     width:100%;
-    margin:0;
-  //  padding:0px;
     background-color:black;
     height:12%;
 }
 
 body>header{
     top:0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.droit{
+    position:fixed;
+    width:26%;
+    margin: auto;
+}
+
+.gauche{
+    position:fixed;
+    width:15%;
+    top:4%;
+    right:5px;
+    bottom:2%;
+}
+
+div{
+    padding:1%;
+    margin-right:auto;
+    margin-left:auto;
     text-align:center;
+}
+
+label{
+    font-size: 1.6em;
+}
+
+html>body>header>div.gauche>a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.4em;
+}
+
+html>body>header>div.gauche>a:hover{
+    color: red;
+}
+
+
+h1{
+    text-align: left;
 }
 
 body>footer{
@@ -25,19 +64,19 @@ body>footer{
 main{
     margin-right:0%;
     margin-left:0%;
-    margin-top:84px;
-    margin-bottom:84px;
+    margin-top:6%;
+    margin-bottom:6%;
 }
 
 section{
 
-    margin:14px;
+    margin:0;
 }
 
 main section img{
 
-    height: 400px;
-    width: 400px;
+  
+    width: 26%;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -47,50 +86,38 @@ h1{
     color: white;
 }
 
-button {
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+button{
     background-color: grey;
-    border-width: 8px;
+    border-width: 0.4em;
     border-color: black;
-    border-radius: 12px;
+    border-radius: 0.4em;
     color: white;
-    text-align: center;
     font-family: script;
     font-weight: bold;
-    padding: 32px 20px;
-    display:inline-block;
-    font-size: 22px;
+    padding: 1em 1em;
+    font-size: 1.6em;
 }
 
 button:hover {
-    background-color: #4C4343; /* Green */
-    color: white;
+    background-color: #4C4343;
 }
 
 input:hover {
-    background-color: #4C4343; /* Green */
+    background-color: #4C4343;
     color: white;
 }
-
-.button1{
-
-    margin-left: 20%;    
-}
-
-
-.button2{
-    
-    float:right;
-    margin-right: 20%;
-    bottom:108px; 
-}
-
 
 .button3{
 
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 16%;
+    margin-top: 6%;
     
 }
 
