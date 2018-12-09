@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>Change password</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style/loginOwner.css"/>
+  </head>
+  <body>
+    <header>
+      <h1> MODIFICATION </h1>
+    </header>
+    <div>
+      
+      <p>You can changed your identifiant and password:</p>
+      <div class="test">
+	<form action="http://localhost:8080/projetWeb/ChangePassOwner" method="post">
+
+	  <div>
+	    <label>New identifiant:</label>
+	    <input type="text" name="identifiant" value="" required/>
+	  </div>
+
+	  <div>
+	    <label>New password:</label>
+	    <input type="text" name="password" value="" required/>
+	  </div>
+
+	  <div>
+	    <button>VALIDER</button>
+	  </div>
+	  
+	</form>
+      </div>
+      
+    </div>
+
+    <footer>
+    </footer>
+  </body>
+</html>
+
