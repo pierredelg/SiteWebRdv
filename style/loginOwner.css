@@ -1,6 +1,7 @@
 body{
-    background-color:white;
-    
+  background:#E6E6E6;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
 }
 
 body>header, body>footer{
@@ -132,7 +133,7 @@ p{
     text-decoration: blink;
 }
 
-.result{
+/*.result{
     background-image: url("../image/fond2.jpeg");
     background-repeat:no-repeat;
     background-position: center;
@@ -140,37 +141,8 @@ p{
     background-size:cover;
     margin-bottom:auto;
     margin-top:auto;
-}
+}*/
 
-table{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10%;
-}
-
-th{
-
-    font-size: 1.8em;
-    background-color: blue;
-    padding: 10px;
-}
-
-table,th{
-   
-    border: 2px solid black;
-}
-
-td
-{
-    margin: 8px;
-    border: 3px solid green;
-    color: black;
-    font-size: 1.8em;
-    text-align: center;
-    font-family: "Times New Roman";
-    background-color: white;
-    
-}
 
 /*bouton log out */
 .out{

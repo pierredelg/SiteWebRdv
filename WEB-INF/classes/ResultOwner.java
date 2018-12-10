@@ -17,13 +17,12 @@ public class ResultOwner extends HttpServlet
 	PrintWriter out = res.getWriter();  
 	res.setContentType( "text/html" );
 	out.println("<!doctype html>");
+	out.println("<html>");
 	out.println("<head> <meta charset=utf-8/>");
-	out.println("<link rel=\"stylesheet\" type=\"text/css\" href='"+req.getContextPath()+"/style/loginOwner.css' />");
+	out.println("<link rel=\"stylesheet\" type=\"text/css\" href='"+req.getContextPath()+"/style/historiqueOwner.css' />");
 	out.println("</head><body class=\"result\">");
 	out.println("<header><h1>DÉTAIL DES RENDEZ-VOUS</h1></header><main>");
 	out.println("<table>");
-	out.println("<tr><th>ID</th><th>IDENTIFIANT</th><th>PASSWORD</th></tr>");
-	
 
 	try {
 	    // On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
@@ -35,15 +34,25 @@ public class ResultOwner extends HttpServlet
 		
 		// un Statement est une interface qui représente une instruction SQL
 		 Statement stat = conn.createStatement();
-		
+
+		 String query = "SELECT * FROM CLIENTS , RDV";
+		 query += " WHERE ClIENTS.NUM = RDV.IDCLIENT";
+		 
 		 // le resultat du select est mis dans un ResultSet
-		 ResultSet rs = stat.executeQuery( "SELECT * FROM utilisateurs;" );
-		 int i = 1;
+		 ResultSet rs = stat.executeQuery(query);
+		 ResultSetMetaData rsMeta = rs.getMetaData();
+		 out.print("<tr>");
+		 for(int i = 1; i <= rsMeta.getColumnCount(); i++)
+		     if(!rsMeta.getColumnName(i).equals("NUM") && !rsMeta.getColumnName(i).equals("IDCLIENT"))
+		     	out.print("<th>"+rsMeta.getColumnName(i)+"</th>");
+		 out.println("</tr>");
+			 
 		 while(rs.next()){
-		    String id = rs.getString("identifiant");
-		    String pass = rs.getString("password");
-		     out.println("<tr><td>"+i+"</td><td>"+id+"</td><td>"+pass+"</td></tr>");
-		     i++;
+		     out.println("<tr>");
+		     for(int i = 1; i <= rsMeta.getColumnCount(); i++)
+			  if(!rsMeta.getColumnName(i).equals("NUM") && !rsMeta.getColumnName(i).equals("IDCLIENT"))
+			      out.print("<td>"+rs.getString(rsMeta.getColumnName(i))+"</td>");
+		     out.print("</tr>");
 		 }
     
 		 rs.close();
@@ -62,7 +71,7 @@ public class ResultOwner extends HttpServlet
 
 	out.println("</table>");
 	out.println("</main><footer><form name=\"loginOwner\" method=\"get\" action=\"loginOwner.html\">");
-	out.println("<button class=\"out\">LOG OUT</button></footer>");   
+	out.println("<button class=\"out\">LOG OUT</button></form></footer>");   
 	out.println("</body></html> ");
     }
 }

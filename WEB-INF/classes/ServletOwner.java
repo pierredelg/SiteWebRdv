@@ -50,7 +50,7 @@ public class ServletOwner extends HttpServlet
 		    out.println("<header><div class =\"droit\"><h1>BIENVENUE "+identifiant.toUpperCase()+"</h1></div><div class=\"gauche\"><a href=\"changedPassOwner.html\">Changed password</a></div></header><main> ");
 
 
-		    out.println("<section><img src=\"image/parametre.png\" alt=\"[roue]\" />");
+		    out.println("<section><img src=\"image/parametre.png\" alt=\"[roue]\" /></section>");
 		     
 		    out.println("<div class=\"buttons\"><form  name=\"configuration\" method=\"post\"  action=\"http://localhost:8080/projetWeb/configOwner\">");
 		    out.println("<button class=\"button1\">Configuration</button></form>");
