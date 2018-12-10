@@ -112,7 +112,7 @@ public class ResultFormUser extends HttpServlet{
       out.println("<li>dans l'" + preferenceAprem);
     }
     
-    if(preferenceLundi != null && preferenceMardi != null && preferenceMercredi != null && preferenceJeudi != null && preferenceVendredi != null && preferenceSamedi != null){
+    if(preferenceLundi != null || preferenceMardi != null || preferenceMercredi != null || preferenceJeudi != null || preferenceVendredi != null || preferenceSamedi != null){
 
       out.println(" parmis les jours suivants </li>");
       out.println("</ul>");
@@ -202,7 +202,7 @@ public class ResultFormUser extends HttpServlet{
             preferenceRappeljava = rs.getString("PREFERENCERAPPEL");
             out.println( "ID = " + idjava+" Prenom = "+prenomjava+" Nom = "+nomjava + " email = "+ emailjava + " tel ="+ telephonejava + " preference de Rappel = " + preferenceRappeljava );
           }
-          stat.executeUpdate("CREATE TABLE IF NOT EXISTS RDV(IDCLIENT INT NOT NULL,PREFLUNDI VCHAR(20),PREFMARDI VCHAR(20),PREFMERCREDI VCHAR(20),PREFJEUDI VCHAR(20),PREFVENDREDI VCHAR(20),PREFSAMEDI VCHAR(20),PREFMATIN VCHAR(20),PREFAPREM VCHAR(20));");
+          stat.executeUpdate("CREATE TABLE IF NOT EXISTS RDV(IDCLIENT INT NOT NULL,LUNDI VCHAR(20),MARDI VCHAR(20),MERCREDI VCHAR(20),JEUDI VCHAR(20),VENDREDI VCHAR(20),SAMEDI VCHAR(20),MATIN VCHAR(20),APREM VCHAR(20));");
           stat.executeUpdate("INSERT INTO RDV VALUES(" + idjava + ",'" + preferenceLundi + "','" + preferenceMardi + "','" + preferenceMercredi + "','" + preferenceJeudi + "','" + preferenceVendredi + "','" + preferenceSamedi + "','" + preferenceMatin + "','" + preferenceAprem + "');");
 
           //On récupere les infos de la table RDV pour vérifier
