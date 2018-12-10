@@ -4,18 +4,43 @@ body{
   text-align: center;
 }
 
-body>header, body>footer{
-    position:fixed;
-    width:100%;
-    background-color:black;
-    height:12%;
+/*NAVBAR*/
+
+nav{
+    z-index: 999;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  margin: 0 auto;
+  width: 100%;
+  background-color: #000;
 }
 
-body>header{
-    top:0;
-    display: flex;
-    justify-content: space-around;
+nav ul{
+  list-style-type: none;
+  text-align: center;
+  height: 2.5em;
 }
+
+nav ul li{
+  display: inline-block;
+  text-align: center;
+ padding: 0.7em 3em 0em 3em;
+}
+
+nav ul li a{
+  text-decoration: none;
+  color: white;
+}
+
+nav ul li a:hover, nav ul li a:active{
+  border-bottom: 0.12em solid #ccc;
+  padding-bottom: 0.5em;
+}
+header nav ul li a:focus {
+    outline: none;
+}
+
 
 .droit{
     position:fixed;
