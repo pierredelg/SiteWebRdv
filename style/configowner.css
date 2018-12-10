@@ -59,15 +59,14 @@ main{
 }
 
 section{
-  display:inline-block;
-  vertical-align:top;
+  
   background:#FFFFFF;
   text-align: left;
   box-shadow:0 2px 3px rgba(0, 0, 0, 0.1);
   padding:1em;
   width:70%;
   height:90%;
-  margin:1em;
+  margin:0.8em;
 }
 
 div{
@@ -106,7 +105,9 @@ form{
   flex-direction:column;
   margin-left: 23%;
 }
-
+.button{
+  text-align: inherit;
+}
 
  /*BUTTON*/
 
@@ -119,7 +120,7 @@ form{
     margin: 1%;
     color: #FFFFFF;
     cursor: pointer;
-    text-align: inherit;
+    
 }
 #valid{
  	background: #4CAF50;

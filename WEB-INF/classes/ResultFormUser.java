@@ -109,7 +109,7 @@ public class ResultFormUser extends HttpServlet{
     }
     
     if(preferenceAprem != null){
-      out.println("<li>dans l'" + preferenceAprem);
+      out.println("dans l'aprés-midi");
     }
     
     if(preferenceLundi != null || preferenceMardi != null || preferenceMercredi != null || preferenceJeudi != null || preferenceVendredi != null || preferenceSamedi != null){
@@ -119,27 +119,27 @@ public class ResultFormUser extends HttpServlet{
       out.println("<div class=\"jour\">");
 
       if(preferenceLundi != null){
-        out.println("<p>" + preferenceLundi + "</p>");
+        out.println("<p>" + "Lundi" + "</p>");
       }
 
       if(preferenceMardi != null){
-        out.println("<p>"+ preferenceMardi + "</p>");
+        out.println("<p>"+ "Mardi" + "</p>");
       }
 
       if(preferenceMercredi != null){
-        out.println("<p>" + preferenceMercredi + "</p>");
+        out.println("<p>" + "Mercredi" + "</p>");
       }
 
       if(preferenceJeudi != null){
-        out.println("<p>" + preferenceJeudi + "</p>");
+        out.println("<p>" + "Jeudi" + "</p>");
       }
 
       if(preferenceVendredi != null){
-        out.println("<p>" + preferenceVendredi + "</p>");
+        out.println("<p>" + "Vendredi" + "</p>");
       }
 
       if(preferenceSamedi != null){
-        out.println("<p>" + preferenceSamedi + "</p>");
+        out.println("<p>" + "Samedi" + "</p>");
       }
 
       out.println("</div>");
@@ -162,84 +162,135 @@ public class ResultFormUser extends HttpServlet{
       out.println("<h2>Nous vous recontactons au plus vite</h2>");
     }
     out.println("</section>");
+
+    ResultSet rs = null;
+    Connection conn = null;
+    Statement stat = null;
     try {
       if (correct = true){
         // On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
         Class.forName("org.sqlite.JDBC");
         String dbURL = "jdbc:sqlite:../webapps/projetWeb/BDD/data.db";
         //On essaye de se connecter à la base
-        Connection conn = DriverManager.getConnection(dbURL);
-        if (conn != null) {
-          out.println("Connected to the database");
-          // un Statement est une interface qui représente une instruction SQL
-          Statement stat = conn.createStatement();
+        conn = DriverManager.getConnection(dbURL);
 
-          stat.executeUpdate("CREATE TABLE IF NOT EXISTS CLIENTS(NUM INT PRIMARY KEY NOT NULL,NOM VCHAR(50) NOT NULL,PRENOM VCHAR(50) NOT NULL,EMAIL VCHAR(20),TEL VCHAR(20),PREFERENCERAPPEL VCHAR(20));");
-
-          // On exécute les requêtes, attention à la différence entre executeUpdate et executeQuery
-          ResultSet rs = stat.executeQuery( "SELECT NUM FROM CLIENTS ORDER BY NUM DESC LIMIT 1;" );
-
-        
-          if(rs != null){
-              id = rs.getInt("NUM");
-              id++;
-            }
-         
-
-          stat.executeUpdate("INSERT INTO CLIENTS VALUES(" + id + ",'" + nom + "','" + prenom +"','" + email +"'," + telephone + ",'" + preferenceRappel + "');");
-
-           // On fait une nouvelle requete
-
-          rs = stat.executeQuery( "SELECT * FROM CLIENTS;" );
-          //On récupere chaque information de la base        
-          while (rs.next()) {
-
-            idjava = rs.getInt("NUM");
-            nomjava = rs.getString("NOM");
-            prenomjava = rs.getString("PRENOM");
-            emailjava = rs.getString("EMAIL");
-            telephonejava = rs.getString("TEL");
-            preferenceRappeljava = rs.getString("PREFERENCERAPPEL");
-            out.println( "ID = " + idjava+" Prenom = "+prenomjava+" Nom = "+nomjava + " email = "+ emailjava + " tel ="+ telephonejava + " preference de Rappel = " + preferenceRappeljava );
-          }
-          stat.executeUpdate("CREATE TABLE IF NOT EXISTS RDV(IDCLIENT INT NOT NULL,LUNDI VCHAR(20),MARDI VCHAR(20),MERCREDI VCHAR(20),JEUDI VCHAR(20),VENDREDI VCHAR(20),SAMEDI VCHAR(20),MATIN VCHAR(20),APREM VCHAR(20));");
-          stat.executeUpdate("INSERT INTO RDV VALUES(" + idjava + ",'" + preferenceLundi + "','" + preferenceMardi + "','" + preferenceMercredi + "','" + preferenceJeudi + "','" + preferenceVendredi + "','" + preferenceSamedi + "','" + preferenceMatin + "','" + preferenceAprem + "');");
-
-          //On récupere les infos de la table RDV pour vérifier
-          rs = stat.executeQuery( "SELECT * FROM RDV;" );
-
-          while (rs.next()) {
-            idrdv = rs.getInt("IDCLIENT");
-            prefLundi=rs.getString("PREFLUNDI");
-            prefMardi=rs.getString("PREFMARDI");
-            prefMercredi=rs.getString("PREFMERCREDI");
-            prefJeudi=rs.getString("PREFJEUDI");
-            prefVendredi=rs.getString("PREFVENDREDI");
-            prefSamedi=rs.getString("PREFSAMEDI");
-            prefMatin=rs.getString("PREFMATIN");
-            prefAprem=rs.getString("PREFAPREM");
-
-            out.println("ID = " + idrdv + " preference = " + prefLundi + " " + prefMardi + " " + prefMercredi + " " + prefJeudi + " " + prefVendredi + " " + prefSamedi + " " + prefMatin + " " + prefAprem);
-          }
-
-          // On ferme les connexions au ResultSet, Statement et à la base
-          rs.close();
-          stat.close();
-          conn.close();
-        }
-      }
-    } 
+      } 
+    }
     catch (ClassNotFoundException ex) {
       ex.printStackTrace();
+      out.println("Erreur de connexion dans base de données");
+    } 
+    catch (SQLException ex) {
+      ex.printStackTrace();
+      out.println("Erreur de connexion dans base de données");
+    }
+    try {
+      if (conn != null) {
+        out.println("Connected to the database");
+          // un Statement est une interface qui représente une instruction SQL
+        stat = conn.createStatement();
+
+        stat.executeUpdate("CREATE TABLE IF NOT EXISTS CLIENTS(ID INTEGER PRIMARY KEY AUTOINCREMENT,NOM VARCHAR(50),PRENOM VARCHAR(50),EMAIL VARCHAR(20),TEL VARCHAR(20),PREFERENCERAPPEL VARCHAR(20));");
+      }
+    } 
+    catch (SQLException ex) {
+      ex.printStackTrace();
+      out.println("Erreur de création dans la base de donnée");
+    }
+    try {
+      stat.executeUpdate("INSERT INTO CLIENTS(NOM,PRENOM,EMAIL,TEL,PREFERENCERAPPEL) VALUES('" + nom + "','" + prenom +"','" + email +"','" + telephone + "','" + preferenceRappel + "');");
+    } 
+    catch (SQLException ex) {
+      ex.printStackTrace();
+      out.println("Erreur d'insertion dans la base de donnée");
+    }
+    try {
+           // On fait une nouvelle requete
+
+      rs = stat.executeQuery( "SELECT * FROM CLIENTS;" );
+
+    }  
+    catch (SQLException ex) {
+      ex.printStackTrace();
+      out.println("Erreur de consultation dans base de données");
+    }
+    try {
+          //On récupere chaque information de la base        
+      while (rs.next()) {
+
+        idjava = rs.getInt("ID");
+        nomjava = rs.getString("NOM");
+        prenomjava = rs.getString("PRENOM");
+        emailjava = rs.getString("EMAIL");
+        telephonejava = rs.getString("TEL");
+        preferenceRappeljava = rs.getString("PREFERENCERAPPEL");
+        out.println( "ID = " + idjava+" Prenom = "+prenomjava+" Nom = "+nomjava + " email = "+ emailjava + " tel ="+ telephonejava + " preference de Rappel = " + preferenceRappeljava );
+      }
 
     } 
     catch (SQLException ex) {
-      ex.printStackTrace();}
-      out.println( "ID = " + idjava+" Prenom = "+prenomjava+" Nom = "+nomjava + " email = "+ emailjava + " tel ="+ telephonejava + " preference de Rappel = " + preferenceRappeljava );
-      out.println("ID = " + idrdv + " preference = " + prefLundi + " " + prefMardi + " " + prefMercredi + " " + prefJeudi + " " + prefVendredi + " " + prefSamedi + " " + prefMatin + " " + prefAprem);
-      out.println("Ces informations sont ajout&eacute;es dans la base de donn&eacute;e ...");
-      out.println("</body>");
-      out.println("</html>");
+      ex.printStackTrace();
+      out.println("Erreur récupération données dans la base de donnée");
+    } 
+    try {
+      stat.executeUpdate("CREATE TABLE IF NOT EXISTS RDV(IDCLIENT INT NOT NULL,LUNDI VCHAR(20),MARDI VCHAR(20),MERCREDI VCHAR(20),JEUDI VCHAR(20),VENDREDI VCHAR(20),SAMEDI VCHAR(20),MATIN VCHAR(20),APREM VCHAR(20));");
 
+    } 
+    catch (SQLException ex) {
+      ex.printStackTrace();
+      out.println("Erreur de création dans la base de donnée");
     }
+    try {
+      stat.executeUpdate("INSERT INTO RDV VALUES(" + idjava + ",'" + preferenceLundi + "','" + preferenceMardi + "','" + preferenceMercredi + "','" + preferenceJeudi + "','" + preferenceVendredi + "','" + preferenceSamedi + "','" + preferenceMatin + "','" + preferenceAprem + "');");
+
+    } 
+   catch (SQLException ex) {
+    ex.printStackTrace();
+    out.println("Erreur d'insertion dans la base de donnée");
   }
+  try {
+          //On récupere les infos de la table RDV pour vérifier
+    rs = stat.executeQuery( "SELECT * FROM RDV;");
+    
+  }
+  catch (SQLException ex) {
+   ex.printStackTrace();
+   out.println("Erreur de consultation dans base de données");
+ }
+ try {
+  while (rs.next()) {
+    idrdv = rs.getInt("IDCLIENT");
+    prefLundi=rs.getString("LUNDI");
+    prefMardi=rs.getString("MARDI");
+    prefMercredi=rs.getString("MERCREDI");
+    prefJeudi=rs.getString("JEUDI");
+    prefVendredi=rs.getString("VENDREDI");
+    prefSamedi=rs.getString("SAMEDI");
+    prefMatin=rs.getString("MATIN");
+    prefAprem=rs.getString("APREM");
+
+    out.println("ID = " + idrdv + " preference = " + prefLundi + " " + prefMardi + " " + prefMercredi + " " + prefJeudi + " " + prefVendredi + " " + prefSamedi + " " + prefMatin + " " + prefAprem);
+  }
+}
+catch (SQLException ex) {
+ ex.printStackTrace();
+ out.println("Erreur de récupération dans la base de données");
+}
+try{
+          // On ferme les connexions au ResultSet, Statement et à la base
+  rs.close();
+  stat.close();
+  conn.close();
+} 
+catch (SQLException ex) {
+ ex.printStackTrace();
+ out.println("Erreur de fermeture de la base de données");
+}
+finally{
+  out.println( "ID = " + idjava+" Prenom = "+prenomjava+" Nom = "+nomjava + " email = "+ emailjava + " tel ="+ telephonejava + " preference de Rappel = " + preferenceRappeljava );
+  out.println("ID = " + idrdv + " preference = " + prefLundi + " " + prefMardi + " " + prefMercredi + " " + prefJeudi + " " + prefVendredi + " " + prefSamedi + " " + prefMatin + " " + prefAprem);
+  out.println("</body>");
+  out.println("</html>");
+}
+}
+}
