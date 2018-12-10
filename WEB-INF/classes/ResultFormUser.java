@@ -177,7 +177,7 @@ public class ResultFormUser extends HttpServlet{
           stat.executeUpdate("CREATE TABLE IF NOT EXISTS CLIENTS(NUM INT PRIMARY KEY NOT NULL,NOM VCHAR(50) NOT NULL,PRENOM VCHAR(50) NOT NULL,EMAIL VCHAR(20),TEL VCHAR(20),PREFERENCERAPPEL VCHAR(20));");
 
           // On exécute les requêtes, attention à la différence entre executeUpdate et executeQuery
-          ResultSet rs = stat.executeQuery( "SELECT NUM FROM CLIENTS ORDER BY DESC LIMIT 1;" );
+          ResultSet rs = stat.executeQuery( "SELECT NUM FROM CLIENTS ORDER BY NUM DESC LIMIT 1;" );
 
         
           if(rs != null){
