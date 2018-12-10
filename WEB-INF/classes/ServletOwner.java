@@ -10,7 +10,7 @@ public class ServletOwner extends HttpServlet
 {
 
     
-    public void doPost( HttpServletRequest req, HttpServletResponse res ) 
+    public void service( HttpServletRequest req, HttpServletResponse res ) 
 	throws ServletException, IOException
     {
 
