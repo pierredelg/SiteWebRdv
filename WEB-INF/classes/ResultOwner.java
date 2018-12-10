@@ -21,7 +21,19 @@ public class ResultOwner extends HttpServlet
 	out.println("<head> <meta charset=utf-8/>");
 	out.println("<link rel=\"stylesheet\" type=\"text/css\" href='"+req.getContextPath()+"/style/historiqueOwner.css' />");
 	out.println("</head><body class=\"result\">");
-	out.println("<header><h1>DÉTAIL DES RENDEZ-VOUS</h1></header><main>");
+	out.println("<header>");
+	out.println("<nav>");
+	out.println("<ul>");
+	out.println("<li><a href=\"http://localhost:8080/projetWeb/servletOwner\">Accueil</a></li>");
+	out.println("<li><a href=\"http://localhost:8080/projetWeb/configowner.html\">Configuration</a></li>");
+	out.println("<li><a href=\"http://localhost:8080/projetWeb/historiqueOwner\">Rendez-vous</a></li>");
+	out.println("<li><a href=\"http://localhost:8080/projetWeb/changedPassOwner.html\">Mot de passe</a></li>");
+	out.println("<li><a href=\"http://localhost:8080/projetWeb/login.html\">Log out</a></li>");
+	out.println("</ul>");
+	out.println("</nav>");
+	out.println("</header>");
+	out.println("<main>");
+	out.println("<h1>DÉTAIL DES RENDEZ-VOUS</h1>");
 	out.println("<table>");
 
 	try {
@@ -47,23 +59,21 @@ public class ResultOwner extends HttpServlet
 		 out.print("<tr>");
 		 for(int i = 1; i <= rsMeta.getColumnCount(); i++)
 		     if(!rsMeta.getColumnName(i).equals("ID") && !rsMeta.getColumnName(i).equals("IDCLIENT"))
-		     	out.print("<th>"+rsMeta.getColumnName(i)+"</th>");
+			 out.print("<th>"+rsMeta.getColumnName(i)+"</th>");
 		 out.println("</tr>");
 			 
 		 while(rs.next()){
 		     out.println("<tr>");
 		     for(int i = 1; i <= rsMeta.getColumnCount(); i++)
-			  if(!rsMeta.getColumnName(i).equals("ID") && !rsMeta.getColumnName(i).equals("IDCLIENT"))
-			      if(!rs.getString(rsMeta.getColumnName(i)).equals(null))
-				  out.print("<td>"+rs.getString(rsMeta.getColumnName(i))+"</td>");
-			      else
-				  out.print("<td>"+" "+ "</td>");
+			 if(!rsMeta.getColumnName(i).equals("ID") && !rsMeta.getColumnName(i).equals("IDCLIENT")){
+			     
+			     if(!rs.getString(rsMeta.getColumnName(i)).equals("null"))
+				 out.print("<td>"+rs.getString(rsMeta.getColumnName(i))+"</td>");
+			     else
+				 out.print("<td> - </td>");
+			 }
 		     out.print("</tr>");
 		 }
-
-		 /*  String ludo = "insert into utilisateurs values('vanessa3','florian')";
-		     stat.executeUpdate(ludo);*/
-		 
 		 rs.close();
 		 stat.close();
 		 conn.close();
@@ -79,8 +89,7 @@ public class ResultOwner extends HttpServlet
 	
 
 	out.println("</table>");
-	out.println("</main><footer><form name=\"loginOwner\" method=\"get\" action=\"login.html\">");
-	out.println("<button class=\"out\">LOG OUT</button></form></footer>");   
+	out.println("</main>");   
 	out.println("</body></html> ");
     }
 }

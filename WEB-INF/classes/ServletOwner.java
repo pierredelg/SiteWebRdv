@@ -45,7 +45,15 @@ public class ServletOwner extends HttpServlet
 					pass = rs.getString("password");
 				}
 
-				if(identifiant.equals(id) && password.equals(pass)){
+
+				//VERIFIE SI TU AS LE TEMPS AVEC LES BUTTONS CACHÉS
+				//J'AI DÉJA ESSAYÉ MAIS JE COMPRENDS PAS PK CA MARCHE PAS
+				
+				/*out.println("<form><input type=\"hidden\" name=\"identifiant\" value=\"pierre\">");
+				out.println("<input type=\"hidden\" name=\"password\" \" value=\"projet\"></form>");
+				out.println("<p>"+identifiant+" "+password+"</p>");*/
+		
+				if((identifiant.equals(id) && password.equals(pass))){
 					out.println("</head><body>");
 					out.println("<header>");
 					out.println("<nav>");
@@ -54,30 +62,26 @@ public class ServletOwner extends HttpServlet
 					out.println("<li><a href=\"http://localhost:8080/projetWeb/configowner.html\">Configuration</a></li>");
 					out.println("<li><a href=\"http://localhost:8080/projetWeb/historiqueOwner\">Rendez-vous</a></li>");
 					out.println("<li><a href=\"http://localhost:8080/projetWeb/changedPassOwner.html\">Mot de passe</a></li>");
+					out.println("<li><a href=\"http://localhost:8080/projetWeb/login.html\">Log out</a></li>");
 					out.println("</ul>");
 					out.println("</nav>");
-					out.println("</header>");
-					out.println("<h1>Bienvenue "+identifiant.toUpperCase()+"</h1>");
-
-					out.println("<main>");
+					out.println("</header><main>");
+					out.println("<h1>Bienvenue dans votre espace "+identifiant.toUpperCase()+"</h1>");
 					out.println("<section><img src=\"image/parametre.png\" alt=\"[roue]\" /></section>");
-
-					out.println("<div class=\"buttons\"><form  name=\"configuration\" method=\"post\"  action=\"http://localhost:8080/projetWeb/configOwner\">");
-					out.println("<button class=\"button1\">Configuration</button></form>");
-
-					out.println("<form  name=\"historique\" method=\"post\"  action=\"http://localhost:8080/projetWeb/historiqueOwner\">");
-					out.println("<button class=\"button2\">Historique</button></form></div>");
 
 
 				}else{
 					out.println("</head><body class=\"result\">");
-					out.println("<header><h1>ERREUR !!!!</h1></header><main> ");
-					out.println("<div class=\"button\"><p class=\"message\">Identifiant et/ou Password INCORRECTE !!!</p>");	     
+					out.println("<header>");
+					out.println("<nav><ul><li></li></ul></nav>");
+					out.println("</header><main> ");
+					out.println("<h1 class=\"erreur\">ERREUR AUTHENTIFICATION !!</h1>");
+					out.println("<p>Identifiant et/ou Password INCORRECTE !!!</p>");	     
 					out.println("<form name=\"loginOwner\" method=\"post\" action=\"login.html\">");
-					out.println("<button class=\"button3\">CONNEXION</button></div>");
+					out.println("<button>CONNEXION</button>");
 
 				}
-
+			
 				rs.close();
 				stat.close();
 				conn.close();

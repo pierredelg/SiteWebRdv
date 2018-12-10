@@ -1,22 +1,44 @@
 body{
   background:#E6E6E6;
-  font-family: 'Source Sans Pro', sans-serif; 
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align:center;
 }
 
-body>header, body>footer{
-    position:fixed;
-    width:100%;
-    background-color:black;
-    height:12%;
+/*NAVBAR*/
+
+nav{
+  z-index: 999;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  margin: 0 auto;
+  width: 100%;
+  background-color: #000;
 }
 
-body>footer{
-    bottom:0;
-    text-align:right;
+nav ul{
+  list-style-type: none;
+  text-align: center;
+  height: 2.5em;
 }
 
-body>header{
-    top:0;
+nav ul li{
+  display: inline-block;
+  text-align: center;
+ padding: 0.7em 3em 0em 3em;
+}
+
+nav ul li a{
+  text-decoration: none;
+  color: white;
+}
+
+nav ul li a:hover, nav ul li a:active{
+  border-bottom: 0.12em solid #ccc;
+  padding-bottom: 0.5em;
+}
+header nav ul li a:focus {
+	outline: none;
 }
 
 main{
@@ -27,53 +49,35 @@ main{
 
 h1{
     text-align: center;
-    color:white;
+    color:green;
+    margin-top:8%;
+    text-decoration:underline;
 }
 
 table{
-    width: 96%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10%;
+    width: 100%;
+    margin-top: 2%;
 }
 
 th{
-
     font-size: 0.8em;
     background-color: black;
-    padding: 10px;
     color: white;
 }
 
-td
-{
- 
+td{
+    text-align:center;
     border: 2px solid green;
-    color: black;
-    font-size: 0.8em;
-    font-weight: bold;
-    text-align: center;
-    background-color: white;
-    
+    background-color:white;
+}
+
+
+.infos{
+    font-weight:bold;
 }
 
 th,td{
-    padding:1%;
-    text-align:center;
+    padding-top:1%;
+    padding-bottom:1%;
 }
 
-button:hover {
-    background-color: #4C4343;
-}
-
-.out{
-    
-    background-color: red;
-    border-radius: 24px;
-    color: white;
-    font-weight: bold;
-    padding: 14px 6px;
-    font-size: 1em;
-    margin-right: 2%;
-    margin-top: 0.8%;
-}

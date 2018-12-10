@@ -1,5 +1,11 @@
 body{
-  background:#E6E6E6;
+  background-color:white;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+}
+
+.result{
+  background-color:#E6E6E6;
   font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
 }
@@ -7,7 +13,7 @@ body{
 /*NAVBAR*/
 
 nav{
-    z-index: 999;
+  z-index: 999;
   position: fixed;
   top: 0px;
   left: 0px;
@@ -23,164 +29,78 @@ nav ul{
 }
 
 nav ul li{
-  display: inline-block;
-  text-align: center;
- padding: 0.7em 3em 0em 3em;
+    display: inline-block;
+    text-align: center;
+    padding: 0.7em 3em 0em 3em;
 }
 
 nav ul li a{
-  text-decoration: none;
-  color: white;
+    text-decoration: none;
+    color: white;
 }
 
 nav ul li a:hover, nav ul li a:active{
-  border-bottom: 0.12em solid #ccc;
-  padding-bottom: 0.5em;
-}
+		       border-bottom: 0.12em solid #ccc;
+		       padding-bottom: 0.5em;
+		   }
+		   
+
 header nav ul li a:focus {
     outline: none;
 }
 
-
-.droit{
-    position:fixed;
-    width:26%;
-    margin: auto;
-}
-
-.gauche{
-    position:fixed;
-    width:15%;
-    top:4%;
-    right:5px;
-    bottom:2%;
-}
-
-div{
-    padding:1%;
-    margin-right:auto;
-    margin-left:auto;
-    text-align:center;
-}
-
-label{
-    font-size: 1.6em;
-}
-
-html>body>header>div.gauche>a{
-    text-decoration: none;
-    color: white;
-    font-size: 1.4em;
-}
-
-html>body>header>div.gauche>a:hover{
-    color: red;
-}
-
-
-h1{
-    text-align: left;
-}
-
-body>footer{
-    bottom:0;
-    text-align:right;
-}
-
 main{
-    margin-right:0%;
-    margin-left:0%;
-    margin-top:6%;
-    margin-bottom:6%;
-}
-
-section{
-
-    margin:0;
+    width:100%;
+    height:100%;
+    margin-top:8em;
 }
 
 main section img{
 
   
-    width: 26%;
-    display: block;
+    width: 30%;
     margin-left: auto;
     margin-right: auto;
 }
 
 h1{
-    color: white;
+    color: black;
 }
 
-.buttons {
-    display: flex;
-    justify-content: space-around;
+.erreur{
+    margin-top:14%;
 }
+
 
 button{
     background-color: grey;
-    border-width: 0.4em;
+    border-width: 0.2em;
     border-color: black;
     border-radius: 0.4em;
     color: white;
     font-family: script;
     font-weight: bold;
-    padding: 1em 1em;
-    font-size: 1.6em;
+    padding: 0.5em 0.5em;
+    font-size: 1.2em;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:2%;
 }
 
 button:hover {
     background-color: #4C4343;
 }
 
-input:hover {
-    background-color: #4C4343;
-    color: white;
-}
-
-.button3{
-
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 6%;
-    
-}
-
 p{
-    
-    text-align: center;
-    font-weight: bold;
-    font-family: script;
-    margin-top:14%;
-    font-size:3em;
-    color: red;
-    text-decoration: blink;
+    color:red;
+    font-weight:bold;
+    font-size:1.8em;
+    padding-top:5%;
+    padding-bottom:3%;
+    text-decoration:underline;
+    animation: colorblink 2s infinite;
 }
 
-/*.result{
-    background-image: url("../image/fond2.jpeg");
-    background-repeat:no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size:cover;
-    margin-bottom:auto;
-    margin-top:auto;
-}*/
-
-
-/*bouton log out */
-.out{
-    
-    background-color: red;
-    border-width: 0px;
-    border-color: black;
-    border-radius: 24px;
-    color: white;
-    text-align: right;
-    font-weight: bold;
-    padding: 14px 6px;
-    font-size: 1em;
-    margin-right: 2%;
-    margin-top: 0.8%;
+@keyframes colorblink{
+    50% {color: black;}
 }

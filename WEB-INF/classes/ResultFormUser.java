@@ -190,7 +190,7 @@ public class ResultFormUser extends HttpServlet{
           // un Statement est une interface qui représente une instruction SQL
         stat = conn.createStatement();
 
-        stat.executeUpdate("CREATE TABLE IF NOT EXISTS CLIENTS(ID INTEGER PRIMARY KEY AUTOINCREMENT,NOM VARCHAR(50),PRENOM VARCHAR(50),EMAIL VARCHAR(20),TEL VARCHAR(20),PREFERENCERAPPEL VARCHAR(20));");
+        stat.executeUpdate("CREATE TABLE IF NOT EXISTS CLIENTS(ID INTEGER PRIMARY KEY AUTOINCREMENT,NOM VARCHAR(50),PRENOM VARCHAR(50),EMAIL VARCHAR(20),TEL VARCHAR(20),RAPPEL_PAR VARCHAR(20));");
       }
     } 
     catch (SQLException ex) {
@@ -198,7 +198,7 @@ public class ResultFormUser extends HttpServlet{
       out.println("Erreur de création dans la base de donnée");
     }
     try {
-      stat.executeUpdate("INSERT INTO CLIENTS(NOM,PRENOM,EMAIL,TEL,PREFERENCERAPPEL) VALUES('" + nom + "','" + prenom +"','" + email +"','" + telephone + "','" + preferenceRappel + "');");
+      stat.executeUpdate("INSERT INTO CLIENTS(NOM,PRENOM,EMAIL,TEL,RAPPEL_PAR) VALUES('" + nom + "','" + prenom +"','" + email +"','" + telephone + "','" + preferenceRappel + "');");
     } 
     catch (SQLException ex) {
       ex.printStackTrace();
@@ -223,7 +223,7 @@ public class ResultFormUser extends HttpServlet{
         prenomjava = rs.getString("PRENOM");
         emailjava = rs.getString("EMAIL");
         telephonejava = rs.getString("TEL");
-        preferenceRappeljava = rs.getString("PREFERENCERAPPEL");
+        preferenceRappeljava = rs.getString("RAPPEL_PAR");
         out.println( "ID = " + idjava+" Prenom = "+prenomjava+" Nom = "+nomjava + " email = "+ emailjava + " tel ="+ telephonejava + " preference de Rappel = " + preferenceRappeljava );
       }
 
