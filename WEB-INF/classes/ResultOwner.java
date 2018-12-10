@@ -10,7 +10,7 @@ public class ResultOwner extends HttpServlet
 {
 
     
-    public void doPost( HttpServletRequest req, HttpServletResponse res ) 
+    public void service( HttpServletRequest req, HttpServletResponse res ) 
 	throws ServletException, IOException
     {
 	
@@ -36,7 +36,7 @@ public class ResultOwner extends HttpServlet
 		 Statement stat = conn.createStatement();
 
 		 String query = "SELECT * FROM CLIENTS , RDV";
-		 query += " WHERE ClIENTS.NUM = RDV.IDCLIENT";
+		 query += " WHERE ClIENTS.ID = RDV.IDCLIENT";
 
 		 
 		 
@@ -46,15 +46,18 @@ public class ResultOwner extends HttpServlet
 		 ResultSetMetaData rsMeta = rs.getMetaData();
 		 out.print("<tr>");
 		 for(int i = 1; i <= rsMeta.getColumnCount(); i++)
-		     if(!rsMeta.getColumnName(i).equals("NUM") && !rsMeta.getColumnName(i).equals("IDCLIENT"))
+		     if(!rsMeta.getColumnName(i).equals("ID") && !rsMeta.getColumnName(i).equals("IDCLIENT"))
 		     	out.print("<th>"+rsMeta.getColumnName(i)+"</th>");
 		 out.println("</tr>");
 			 
 		 while(rs.next()){
 		     out.println("<tr>");
 		     for(int i = 1; i <= rsMeta.getColumnCount(); i++)
-			  if(!rsMeta.getColumnName(i).equals("NUM") && !rsMeta.getColumnName(i).equals("IDCLIENT"))
-			      out.print("<td>"+rs.getString(rsMeta.getColumnName(i))+"</td>");
+			  if(!rsMeta.getColumnName(i).equals("ID") && !rsMeta.getColumnName(i).equals("IDCLIENT"))
+			      if(!rs.getString(rsMeta.getColumnName(i)).equals(null))
+				  out.print("<td>"+rs.getString(rsMeta.getColumnName(i))+"</td>");
+			      else
+				  out.print("<td>"+" "+ "</td>");
 		     out.print("</tr>");
 		 }
 
