@@ -49,7 +49,7 @@ public class ChangePassOwner extends HttpServlet
 		out.println("</head><body>");
 		out.println("<header><h1> MOT DE PASSE ENREGISTRÉ </h1></header>");
 		out.println("<main><p>Valider le changement svp !!</p><div>");
-		out.println("<form  name=\"loginOwner\" method=\"post\"  action=\"loginOwner.html\">");
+		out.println("<form  name=\"loginOwner\" method=\"post\"  action=\"login.html\">");
 	       	out.println("<button>VALIDER</button>");
 		out.println("</div></main>");
 		

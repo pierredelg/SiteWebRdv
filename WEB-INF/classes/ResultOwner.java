@@ -37,6 +37,9 @@ public class ResultOwner extends HttpServlet
 
 		 String query = "SELECT * FROM CLIENTS , RDV";
 		 query += " WHERE ClIENTS.NUM = RDV.IDCLIENT";
+
+		 
+		 
 		 
 		 // le resultat du select est mis dans un ResultSet
 		 ResultSet rs = stat.executeQuery(query);
@@ -54,7 +57,10 @@ public class ResultOwner extends HttpServlet
 			      out.print("<td>"+rs.getString(rsMeta.getColumnName(i))+"</td>");
 		     out.print("</tr>");
 		 }
-    
+
+		 /*  String ludo = "insert into utilisateurs values('vanessa3','florian')";
+		     stat.executeUpdate(ludo);*/
+		 
 		 rs.close();
 		 stat.close();
 		 conn.close();
@@ -70,7 +76,7 @@ public class ResultOwner extends HttpServlet
 	
 
 	out.println("</table>");
-	out.println("</main><footer><form name=\"loginOwner\" method=\"get\" action=\"loginOwner.html\">");
+	out.println("</main><footer><form name=\"loginOwner\" method=\"get\" action=\"login.html\">");
 	out.println("<button class=\"out\">LOG OUT</button></form></footer>");   
 	out.println("</body></html> ");
     }

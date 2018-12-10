@@ -63,7 +63,7 @@ public class ServletOwner extends HttpServlet
 		    out.println("</head><body class=\"result\">");
 		    out.println("<header><h1>ERREUR !!!!</h1></header><main> ");
 		    out.println("<div class=\"button\"><p class=\"message\">Identifiant et/ou Password INCORRECTE !!!</p>");	     
-		    out.println("<form name=\"loginOwner\" method=\"post\" action=\"loginOwner.html\">");
+		    out.println("<form name=\"loginOwner\" method=\"post\" action=\"login.html\">");
 		    out.println("<button class=\"button3\">CONNEXION</button></div>");
 		    
 		}
