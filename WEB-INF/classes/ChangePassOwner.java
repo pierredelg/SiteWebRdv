@@ -47,9 +47,13 @@ public class ChangePassOwner extends HttpServlet
 	       
 		
 		out.println("</head><body>");
-		out.println("<header><h1> MOT DE PASSE ENREGISTRÉ </h1></header>");
-		out.println("<main><p>Valider le changement svp !!</p><div>");
-		out.println("<form  name=\"loginOwner\" method=\"post\"  action=\"login.html\">");
+		out.println("<header>");
+		out.println("<nav><ul><li></li></ul></nav>");
+		out.println("</header>");
+		out.println("<main>");
+		out.println("<h1> MOT DE PASSE ENREGISTRÉ </h1>");
+		out.println("<p>Valider le changement svp !!</p><div>");
+		out.println("<div><form  name=\"loginOwner\" method=\"post\"  action=\"login.html\">");
 	       	out.println("<button>VALIDER</button>");
 		out.println("</div></main>");
 		

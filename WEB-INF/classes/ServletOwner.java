@@ -67,7 +67,7 @@ public class ServletOwner extends HttpServlet
 					out.println("</ul>");
 					out.println("</nav>");
 					out.println("</header><main>");
-					out.println("<h1>Bienvenue dans votre espace "+identifiant.toUpperCase()+"</h1>");
+					out.println("<h1>Bienvenue dans votre espace<span class=\"identity\"> "+identifiant.toUpperCase()+"</span></h1>");
 					out.println("<section><img src=\"image/parametre.png\" alt=\"[roue]\" /></section>");
 
 
@@ -80,6 +80,7 @@ public class ServletOwner extends HttpServlet
 					out.println("<p>Identifiant et/ou mot de passe incorrect</p>");	     
 					out.println("<form name=\"loginOwner\" method=\"post\" action=\"login.html\">");
 					out.println("<button>CONNEXION</button>");
+					out.println("</form>");
 
 				}
 			

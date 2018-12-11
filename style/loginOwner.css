@@ -104,3 +104,7 @@ p{
 @keyframes colorblink{
     50% {color: black;}
 }
+
+.identity{
+    color:red;
+}
