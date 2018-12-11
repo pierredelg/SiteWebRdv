@@ -60,7 +60,7 @@ public class MakeUserIndex extends HttpServlet
         out.println("");
         out.println("<head>");
         out.println("<meta charset=\"UTF-8\">");
-        out.println("<link rel=\"stylesheet\" href=\"/projetWeb/style/resultform.css\"/>");
+        out.println("<link rel=\"stylesheet\" href=\"/projetWeb/style/userindex.css\"/>");
         out.println("<title>Accueil</title>");
         out.println("</head>");
         out.println("<body>");
@@ -68,8 +68,8 @@ public class MakeUserIndex extends HttpServlet
         out.println("<nav>");
         out.println("<ul>");
         out.println("<li><a href=\"http://localhost:8080/projetWeb/Index\">Accueil</a></li>");
-        out.println("<li><a href=\"http://localhost:8080/projetWeb/servlet/Make\">Rendez-vous</a></li>");
-        out.println("<li><a href=\"http://localhost:8080/projetWeb/usercontact.html\">Contact</a></li>");
+        out.println("<li><a href=\"http://localhost:8080/projetWeb/RDV\">Rendez-vous</a></li>");
+        out.println("<li><a href=\"http://localhost:8080/projetWeb/Contact\">Contact</a></li>");
         out.println("</ul>");
         out.println("</nav>");
         out.println("</header>");

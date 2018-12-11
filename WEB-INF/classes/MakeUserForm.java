@@ -3,7 +3,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet("/servlet/Make")
+@WebServlet("/RDV")
 public class MakeUserForm extends HttpServlet
 {
   public void service( HttpServletRequest req, HttpServletResponse res ) 
