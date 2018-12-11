@@ -178,15 +178,14 @@ public class ResultFormUser extends HttpServlet{
     }
     catch (ClassNotFoundException ex) {
       ex.printStackTrace();
-      out.println("Erreur de connexion dans base de données");
+      out.println("Erreur de connexion dans base de donn&eacute;es");
     } 
     catch (SQLException ex) {
       ex.printStackTrace();
-      out.println("Erreur de connexion dans base de données");
+      out.println("Erreur de connexion dans base de donn&eacute;es");
     }
     try {
       if (conn != null) {
-        out.println("Connected to the database");
           // un Statement est une interface qui représente une instruction SQL
         stat = conn.createStatement();
 
@@ -195,14 +194,14 @@ public class ResultFormUser extends HttpServlet{
     } 
     catch (SQLException ex) {
       ex.printStackTrace();
-      out.println("Erreur de création dans la base de donnée");
+      out.println("Erreur de cr&eacute;ation dans la base de donnée");
     }
     try {
       stat.executeUpdate("INSERT INTO CLIENTS(NOM,PRENOM,EMAIL,TEL,RAPPEL_PAR) VALUES('" + nom + "','" + prenom +"','" + email +"','" + telephone + "','" + preferenceRappel + "');");
     } 
     catch (SQLException ex) {
       ex.printStackTrace();
-      out.println("Erreur d'insertion dans la base de donnée");
+      out.println("Erreur d'insertion dans la base de donn&eacute;e");
     }
     try {
            // On fait une nouvelle requete
@@ -212,7 +211,7 @@ public class ResultFormUser extends HttpServlet{
     }  
     catch (SQLException ex) {
       ex.printStackTrace();
-      out.println("Erreur de consultation dans base de données");
+      out.println("Erreur de consultation dans la base de donn&eacute;es");
     }
     try {
           //On récupere chaque information de la base        
@@ -230,7 +229,7 @@ public class ResultFormUser extends HttpServlet{
     } 
     catch (SQLException ex) {
       ex.printStackTrace();
-      out.println("Erreur récupération données dans la base de donnée");
+      out.println("Erreur de r&eacute;cup&eacute;ration dans la base de donn&eacute;es");
     } 
     try {
       stat.executeUpdate("CREATE TABLE IF NOT EXISTS RDV(IDCLIENT INT NOT NULL,LUNDI VCHAR(20),MARDI VCHAR(20),MERCREDI VCHAR(20),JEUDI VCHAR(20),VENDREDI VCHAR(20),SAMEDI VCHAR(20),MATIN VCHAR(20),APREM VCHAR(20));");
@@ -238,7 +237,7 @@ public class ResultFormUser extends HttpServlet{
     } 
     catch (SQLException ex) {
       ex.printStackTrace();
-      out.println("Erreur de création dans la base de donnée");
+      out.println("Erreur de cr&eacute;ation dans la base de donn&eacute;es");
     }
     try {
       stat.executeUpdate("INSERT INTO RDV VALUES(" + idjava + ",'" + preferenceLundi + "','" + preferenceMardi + "','" + preferenceMercredi + "','" + preferenceJeudi + "','" + preferenceVendredi + "','" + preferenceSamedi + "','" + preferenceMatin + "','" + preferenceAprem + "');");
@@ -246,7 +245,7 @@ public class ResultFormUser extends HttpServlet{
     } 
    catch (SQLException ex) {
     ex.printStackTrace();
-    out.println("Erreur d'insertion dans la base de donnée");
+    out.println("Erreur d'insertion dans la base de donn&eacute;es");
   }
   try {
           //On récupere les infos de la table RDV pour vérifier
@@ -255,7 +254,7 @@ public class ResultFormUser extends HttpServlet{
   }
   catch (SQLException ex) {
    ex.printStackTrace();
-   out.println("Erreur de consultation dans base de données");
+   out.println("Erreur de consultation dans la base de donn&eacute;es");
  }
  try {
   while (rs.next()) {
@@ -274,7 +273,7 @@ public class ResultFormUser extends HttpServlet{
 }
 catch (SQLException ex) {
  ex.printStackTrace();
- out.println("Erreur de récupération dans la base de données");
+ out.println("Erreur de r&eacute;cup&eacute;ration dans la base de donn&eacute;es");
 }
 try{
           // On ferme les connexions au ResultSet, Statement et à la base
@@ -284,7 +283,7 @@ try{
 } 
 catch (SQLException ex) {
  ex.printStackTrace();
- out.println("Erreur de fermeture de la base de données");
+ out.println("Erreur de fermeture de la base de donn&eacute;es");
 }
 finally{
   out.println( "ID = " + idjava+" Prenom = "+prenomjava+" Nom = "+nomjava + " email = "+ emailjava + " tel ="+ telephonejava + " preference de Rappel = " + preferenceRappeljava );
