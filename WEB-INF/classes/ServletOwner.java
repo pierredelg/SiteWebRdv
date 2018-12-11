@@ -19,6 +19,12 @@ public class ServletOwner extends HttpServlet
 		String id = "";
 		String pass = "";
 
+		HttpSession session = req.getSession();
+
+		if(identifiant == null && password == null){
+			identifiant = (String)session.getAttribute("identifiant");
+			password = (String)session.getAttribute("password");
+		}
 		PrintWriter out = res.getWriter();  
 		res.setContentType( "text/html" );
 		out.println("<!doctype html>");
@@ -27,33 +33,28 @@ public class ServletOwner extends HttpServlet
 
 		try {
 
-	    // On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
+	    	// On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
 			Class.forName("org.sqlite.JDBC");
 			String dbURL =  "jdbc:sqlite:../webapps/projetWeb/BDD/data.db";
-	    //	out.println("<!doctype html>");
-	    //On essaye de se connecter à la base
+
+	    	//On essaye de se connecter à la base
 			Connection conn = DriverManager.getConnection(dbURL);
 			if (conn != null) {
-		// un Statement est une interface qui représente une instruction SQL
+
+				// un Statement est une interface qui représente une instruction SQL
 				Statement stat = conn.createStatement();
 
-		// le resultat du select est mis dans un ResultSet
+				// le resultat du select est mis dans un ResultSet
 				ResultSet rs = stat.executeQuery( "SELECT * FROM utilisateurs;" );
 
 				while(rs.next()){
 					id = rs.getString("identifiant");
 					pass = rs.getString("password");
 				}
-
-
-				//VERIFIE SI TU AS LE TEMPS AVEC LES BUTTONS CACHÉS
-				//J'AI DÉJA ESSAYÉ MAIS JE COMPRENDS PAS PK CA MARCHE PAS
-				
-				/*out.println("<form><input type=\"hidden\" name=\"identifiant\" value=\"pierre\">");
-				out.println("<input type=\"hidden\" name=\"password\" \" value=\"projet\"></form>");
-				out.println("<p>"+identifiant+" "+password+"</p>");*/
 		
 				if((identifiant.equals(id) && password.equals(pass))){
+					session.setAttribute("identifiant",id);
+					session.setAttribute("password",pass);
 					out.println("</head><body>");
 					out.println("<header>");
 					out.println("<nav>");
@@ -75,8 +76,8 @@ public class ServletOwner extends HttpServlet
 					out.println("<header>");
 					out.println("<nav><ul><li></li></ul></nav>");
 					out.println("</header><main> ");
-					out.println("<h1 class=\"erreur\">ERREUR AUTHENTIFICATION !!</h1>");
-					out.println("<p>Identifiant et/ou Password INCORRECTE !!!</p>");	     
+					out.println("<h1 class=\"erreur\">Erreur d'authentification</h1>");
+					out.println("<p>Identifiant et/ou mot de passe incorrect</p>");	     
 					out.println("<form name=\"loginOwner\" method=\"post\" action=\"login.html\">");
 					out.println("<button>CONNEXION</button>");
 
