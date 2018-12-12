@@ -14,30 +14,7 @@ public class ResultOwner extends HttpServlet
 	throws ServletException, IOException
     {
 
-	String nom="";
-	int i = 0;
-	PrintWriter out = res.getWriter();  
-	res.setContentType( "text/html" );
-	out.println("<!doctype html>");
-	out.println("<html>");
-	out.println("<head> <meta charset=utf-8/>");
-	out.println("<link rel=\"stylesheet\" type=\"text/css\" href='"+req.getContextPath()+"/style/historiqueOwner.css' />");
-	out.println("</head><body class=\"result\">");
-	out.println("<header>");
-	out.println("<nav>");
-	out.println("<ul>");
-	out.println("<li><a href=\"http://localhost:8080/projetWeb/servletOwner\">Accueil</a></li>");
-	out.println("<li><a href=\"http://localhost:8080/projetWeb/configowner.html\">Configuration</a></li>");
-	out.println("<li><a href=\"http://localhost:8080/projetWeb/historiqueOwner\">Rendez-vous</a></li>");
-	out.println("<li><a href=\"http://localhost:8080/projetWeb/changedPassOwner.html\">Mot de passe</a></li>");
-	out.println("<li><a href=\"http://localhost:8080/projetWeb/login.html\">Log out</a></li>");
-	out.println("</ul>");
-	out.println("</nav>");
-	out.println("</header>");
-	out.println("<main>");
-	out.println("<h1>DÉTAIL DES RENDEZ-VOUS</h1>");
-	out.println("<form method=\"post\" action=\"http://localhost:8080/projetWeb/refreshBDD\">");
-	out.println("<table>");
+
 
 	try {
 	    // On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
@@ -67,23 +44,9 @@ public class ResultOwner extends HttpServlet
 		 out.println("</tr>");
 
 	
-		 while(rs.next()){
-		    	 out.print("<tr>");
-		     for(i = 1; i <= rsMeta.getColumnCount(); i++){
-			 if(!rsMeta.getColumnName(i).equals("ID") && !rsMeta.getColumnName(i).equals("IDCLIENT")){
-			     
-			     if(!rs.getString(rsMeta.getColumnName(i)).equals("null"))
-				 out.print("<td>"+rs.getString(rsMeta.getColumnName(i))+"</td>");
-			     else
-				 out.print("<td> - </td>");
-			 }
-			
-		     }
+        
 		     
-		     out.print("<td>");
-		     out.print("<div class=\"box\"><input type=\"checkbox\" name=\""+rs.getString(rsMeta.getColumnName(2))+"\" value=\"ok\"></div>");
-		     out.print("</td>");
-		     out.print("</tr>");
+	        
 		 }
 		
 		 rs.close();

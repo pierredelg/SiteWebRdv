@@ -81,3 +81,15 @@ th,td{
     padding-bottom:1%;
 }
 
+.supprimer{
+    text-align:right;
+}
+
+button{
+    background-color:red;
+    border-radius:16px;
+    color:white;
+    padding:0.6em;
+    font-size:1em;
+}
+
