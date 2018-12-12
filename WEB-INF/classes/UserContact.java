@@ -6,6 +6,7 @@ import java.sql.*;
 
 @WebServlet("/Contact")
 public class UserContact extends HttpServlet {
+
     public void service(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         ResultSet rs = null;

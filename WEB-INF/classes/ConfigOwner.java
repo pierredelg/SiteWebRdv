@@ -111,9 +111,18 @@ public class ConfigOwner extends HttpServlet
                 out.println("<h2>Pr&eacute;sentation</h2>");
                 out.println("<ul>");
 
-				try{
+                try{
 
                     stat = conn.createStatement();
+                    stat.executeUpdate("CREATE TABLE IF NOT EXISTS MAGASIN(NOM TEXT,ADRESSE TEXT,EMAIL TEXT,TEL TEXT,TEXTEBIENVENUE TEXT,URLIMAGE TEXT, LUNDI TEXT,MARDI TEXT,MERCREDI TEXT,JEUDI TEXT,VENDREDI TEXT,SAMEDI TEXT,DIMANCHE TEXT);");
+                
+                }
+                catch (SQLException ex) {
+                    ex.printStackTrace();
+                    out.println("Erreur de consultation dans la base de donn&eacute;es");
+                }
+
+				try{
 
                     rs = stat.executeQuery("SELECT * FROM MAGASIN;");
 
@@ -145,32 +154,56 @@ public class ConfigOwner extends HttpServlet
                     out.println("Erreur de r&eacute;cup&eacute;ration dans la base de donn&eacute;e");
                 }try {
                     if(!nomEntreprise.equals("")) {
-                        stat.executeUpdate("UPDATE MAGASIN SET NOM = REPLACE(NOM,'" + nom + "','" + nomEntreprise + "');");
+                        if(nom.equals("")){
+                            stat.executeUpdate("INSERT INTO MAGASIN(NOM) VALUES( '"+ nomEntreprise +"');");
+                        }else{
+                            stat.executeUpdate("UPDATE MAGASIN SET NOM = REPLACE(NOM,'" + nom + "','" + nomEntreprise + "');");
+                        }
                         out.println("<li>Nom de l'entreprise : " + nomEntreprise + "</li>");
                     }
 
                     if(!adresseEntreprise.equals("")) {
-                        stat.executeUpdate("UPDATE MAGASIN SET ADRESSE = REPLACE(ADRESSE,'" + adresse + "','" + adresseEntreprise + "');");
+                        if(adresse.equals("")){
+                            stat.executeUpdate("INSERT INTO MAGASIN(ADRESSE) VALUES( '"+ adresseEntreprise +"');");
+                        }else{
+                            stat.executeUpdate("UPDATE MAGASIN SET ADRESSE = REPLACE(ADRESSE,'" + adresse + "','" + adresseEntreprise + "');");
+                        }
                         out.println("<li>Adresse de l'entreprise : " + adresseEntreprise + "</li>");
                     }
 
                     if(!emailEntreprise.equals("")){
+                        if(mail.equals("")){
+                            stat.executeUpdate("INSERT INTO MAGASIN(EMAIL) VALUES( '"+ emailEntreprise +"');");
+                        }else{
                         stat.executeUpdate("UPDATE MAGASIN SET EMAIL = REPLACE(EMAIL,'"+ mail +"','"+emailEntreprise+"');");
+                    }
                         out.println("<li>Email de l'entreprise : "+ emailEntreprise + "</li>");
                     }
 
                     if(!telephoneEntreprise.equals("")){
+                        if(tel.equals("")){
+                            stat.executeUpdate("INSERT INTO MAGASIN(TEL) VALUES( '"+ telephoneEntreprise +"');");
+                        }else{
                         stat.executeUpdate("UPDATE MAGASIN SET TEL = REPLACE(TEL,'"+ tel +"','"+telephoneEntreprise+"');");
+                    }
                         out.println("<li>T&eacute;l&eacute;phone de l'entreprise : "+ telephoneEntreprise + "</li>");
                     }
 
                     if(!textBienvenue.equals("")){
+                        if(text.equals("")){
+                            stat.executeUpdate("INSERT INTO MAGASIN(TEXTEBIENVENUE) VALUES( '"+ textBienvenue +"');");
+                        }else{
                         stat.executeUpdate("UPDATE MAGASIN SET TEXTEBIENVENUE = REPLACE(TEXTEBIENVENUE,'"+text+"','"+textBienvenue+"');");
+                    }
                         out.println("<li>Votre texte de bienvenue sur le site de l'entreprise : "+ textBienvenue + "</li>");
                     }
 
                     if(!ulrImage.equals("")){
+                        if(url.equals("")){
+                            stat.executeUpdate("INSERT INTO MAGASIN(URLIMAGE) VALUES( '"+ ulrImage +"');");
+                        }else{
                         stat.executeUpdate("UPDATE MAGASIN SET URLIMAGE = REPLACE(URLIMAGE,'"+url+"','"+ulrImage+"');");
+                    }
                         out.println("<li>L'url de l'image de page d'accueil : "+ ulrImage + "</li>");
                     }
 
@@ -181,37 +214,65 @@ public class ConfigOwner extends HttpServlet
                     out.println("<ul>");
 
                     if(!horaireLundi.equals("")){
+                        if(lundi.equals("")){
+                            stat.executeUpdate("INSERT INTO MAGASIN(LUNDI) VALUES( '"+ horaireLundi +"');");
+                        }else{
                         stat.executeUpdate("UPDATE MAGASIN SET LUNDI = REPLACE(LUNDI,'"+lundi+"','"+horaireLundi+"');");
+                    }
                         out.println("<li>Lundi : "+ horaireLundi + "</li>");
                     }
 
                     if(!horaireMardi.equals("")){
+                        if(mardi.equals("")){
+                            stat.executeUpdate("INSERT INTO MAGASIN(MARDI) VALUES( '"+ horaireMardi +"');");
+                        }else{
                         stat.executeUpdate("UPDATE MAGASIN SET MARDI = REPLACE(MARDI,'"+mardi+"','"+horaireMardi+"');");
+                    }
                         out.println("<li>Mardi : "+ horaireMardi + "</li>");
                     }
 
                     if(!horaireMercredi.equals("")) {
+                        if(mercredi.equals("")){
+                            stat.executeUpdate("INSERT INTO MAGASIN(MERCREDI) VALUES( '"+ horaireMercredi +"');");
+                        }else{
                         stat.executeUpdate("UPDATE MAGASIN SET MERCREDI = REPLACE(MERCREDI,'" + mercredi + "','" + horaireMercredi + "');");
+                    }
                         out.println("<li>Mercredi : " + horaireMercredi + "</li>");
                     }
 
                     if(!horaireJeudi.equals("")){
+                        if(jeudi.equals("")){
+                            stat.executeUpdate("INSERT INTO MAGASIN(JEUDI) VALUES( '"+ horaireJeudi +"');");
+                        }else{
                         stat.executeUpdate("UPDATE MAGASIN SET JEUDI = REPLACE(JEUDI,'"+jeudi+"','"+horaireJeudi+"');");
+                    }
                         out.println("<li>Jeudi : "+ horaireJeudi + "</li>");
                     }
 
                     if(!horaireVendredi.equals("")){
+                        if(vendredi.equals("")){
+                            stat.executeUpdate("INSERT INTO MAGASIN(VENDREDI) VALUES( '"+ horaireVendredi +"');");
+                        }else{
                         stat.executeUpdate("UPDATE MAGASIN SET VENDREDI = REPLACE(VENDREDI,'"+vendredi+"','"+horaireVendredi+"');");
+                    }
                         out.println("<li>Vendredi : "+ horaireVendredi + "</li>");
                     }
 
                     if(!horaireSamedi.equals("")){
+                        if(samedi.equals("")){
+                            stat.executeUpdate("INSERT INTO MAGASIN(SAMEDI) VALUES( '"+ horaireSamedi +"');");
+                        }else{
                         stat.executeUpdate("UPDATE MAGASIN SET SAMEDI = REPLACE(SAMEDI,'"+samedi+"','"+horaireSamedi+"');");
+                    }
                         out.println("<li>Samedi : "+ horaireSamedi + "</li>");
                     }
 
                     if(!horaireDimanche.equals("")){
+                        if(dimanche.equals("")){
+                            stat.executeUpdate("INSERT INTO MAGASIN(DIMANCHE) VALUES( '"+ horaireDimanche +"'');");
+                        }else{
                         stat.executeUpdate("UPDATE MAGASIN SET DIMANCHE = REPLACE(DIMANCHE,'"+dimanche+"','"+horaireDimanche+"');");
+                    }
                         out.println("<li>Dimanche : "+ horaireDimanche + "</li>");
                     }
 
