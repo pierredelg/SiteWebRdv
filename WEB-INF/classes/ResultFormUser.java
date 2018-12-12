@@ -267,8 +267,6 @@ public class ResultFormUser extends HttpServlet{
     prefSamedi=rs.getString("SAMEDI");
     prefMatin=rs.getString("MATIN");
     prefAprem=rs.getString("APREM");
-
-    out.println("ID = " + idrdv + " preference = " + prefLundi + " " + prefMardi + " " + prefMercredi + " " + prefJeudi + " " + prefVendredi + " " + prefSamedi + " " + prefMatin + " " + prefAprem);
   }
 }
 catch (SQLException ex) {
@@ -286,8 +284,6 @@ catch (SQLException ex) {
  out.println("Erreur de fermeture de la base de donn&eacute;es");
 }
 finally{
-  out.println( "ID = " + idjava+" Prenom = "+prenomjava+" Nom = "+nomjava + " email = "+ emailjava + " tel ="+ telephonejava + " preference de Rappel = " + preferenceRappeljava );
-  out.println("ID = " + idrdv + " preference = " + prefLundi + " " + prefMardi + " " + prefMercredi + " " + prefJeudi + " " + prefVendredi + " " + prefSamedi + " " + prefMatin + " " + prefAprem);
   out.println("</body>");
   out.println("</html>");
 }

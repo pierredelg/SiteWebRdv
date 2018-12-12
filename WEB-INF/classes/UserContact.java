@@ -111,7 +111,7 @@ public class UserContact extends HttpServlet {
         out.println("</section>");
         out.println("</div>");
         out.println("<div class=\"map\">");
-        out.println("<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d80985.23060031632!2d2.977120413537607!3d50.63104650741714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d579b3256e11%3A0x40af13e81646360!2sLille!5e0!3m2!1sfr!2sfr!4v1544566085839\" width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>");
+        out.println("<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11379802.737617277!2d-6.932434662998441!3d45.86586441149135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd54a02933785731%3A0x6bfd3f96c747d9f7!2sFrance!5e0!3m2!1sfr!2sfr!4v1544641799293\" width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>");
         out.println("<section class=\"network\">");
         out.println("<span>Et aussi :</span>");
         out.println("<a href=\"https://fr-fr.facebook.com\"><img class=\"Facebook\" src=\"./image/facebook.png\" alt=\"Logo facebook\" title=\"Facebook\" /></a>");

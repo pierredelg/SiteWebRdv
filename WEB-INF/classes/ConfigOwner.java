@@ -22,7 +22,7 @@ public class ConfigOwner extends HttpServlet
 
 		String textBienvenue = req.getParameter("textBienvenueE");
 
-        String ulrImage = req.getParameter("urlImage");
+        String urlImage = req.getParameter("urlImage");
 
 		String horaireLundi = req.getParameter("horaireLundi");
 
@@ -77,7 +77,7 @@ public class ConfigOwner extends HttpServlet
 		out.println("</header>");
 		out.println("<main>");
 
-		if(nomEntreprise.equals("") && adresseEntreprise.equals("") && emailEntreprise.equals("") && telephoneEntreprise.equals("") && textBienvenue.equals("") && horaireLundi.equals("") && horaireMardi.equals("") && horaireMercredi.equals("") && horaireJeudi.equals("") && horaireVendredi.equals("") && horaireSamedi.equals("") && horaireDimanche.equals("")){
+		if(nomEntreprise.equals("") && adresseEntreprise.equals("") && emailEntreprise.equals("") && telephoneEntreprise.equals("") && textBienvenue.equals("") && urlImage.equals("") && horaireLundi.equals("") && horaireMardi.equals("") && horaireMercredi.equals("") && horaireJeudi.equals("") && horaireVendredi.equals("") && horaireSamedi.equals("") && horaireDimanche.equals("")){
 			out.println("<div>");
 			out.println("<h1> Erreur </h1> ");
 			out.println("<p>Aucun champ de formulaire rempli</p>");
@@ -198,13 +198,13 @@ public class ConfigOwner extends HttpServlet
                         out.println("<li>Votre texte de bienvenue sur le site de l'entreprise : "+ textBienvenue + "</li>");
                     }
 
-                    if(!ulrImage.equals("")){
+                    if(!urlImage.equals("")){
                         if(url.equals("")){
-                            stat.executeUpdate("INSERT INTO MAGASIN(URLIMAGE) VALUES( '"+ ulrImage +"');");
+                            stat.executeUpdate("INSERT INTO MAGASIN(URLIMAGE) VALUES( '"+ urlImage +"');");
                         }else{
-                        stat.executeUpdate("UPDATE MAGASIN SET URLIMAGE = REPLACE(URLIMAGE,'"+url+"','"+ulrImage+"');");
+                        stat.executeUpdate("UPDATE MAGASIN SET URLIMAGE = REPLACE(URLIMAGE,'"+url+"','"+urlImage+"');");
                     }
-                        out.println("<li>L'url de l'image de page d'accueil : "+ ulrImage + "</li>");
+                        out.println("<li>L'url de l'image de page d'accueil : "+ urlImage + "</li>");
                     }
 
                     out.println("</ul>");
@@ -279,10 +279,6 @@ public class ConfigOwner extends HttpServlet
                     out.println("</ul>");
                     out.println("</section>");
 
-				// stat = conn.createStatement();
-    			//stat.executeUpdate("CREATE TABLE IF NOT EXISTS MAGASIN(NOM TEXT,ADRESSE TEXT,EMAIL TEXT,TEL TEXT,TEXTEBIENVENUE TEXT,URLIMAGE TEXT, LUNDI TEXT,MARDI TEXT,MERCREDI TEXT,JEUDI TEXT,VENDREDI TEXT,SAMEDI TEXT,DIMANCHE TEXT);");
-    			//stat.executeUpdate("INSERT INTO MAGASIN VALUES('" + nomEntreprise + "','" + adresseEntreprise +"','" + emailEntreprise +"','" + telephoneEntreprise + "','" + textBienvenue + "','" + urlImage + "','" +horaireLundi +  "','" + horaireMardi + "','" + horaireMercredi + "','" + horaireJeudi + "','" + horaireVendredi + "','" + horaireSamedi + "','" + horaireDimanche + "');");
-                //INSERT INTO MAGASIN VALUES('mon magasin','1 rue nationale 59000 Lille', 'monmagasin@gmail.com', '02389084424', 'bienvenue dans mon magasin','./image/accueil.jpg','Fermé','9h00-12h00 14h00-18h00','9h00-12h00 14h00-18h00','9h00-12h00 14h00-18h00','9h00-12h00 14h00-18h00','9h00-12h00 14h00-18h00','Fermé');
 				}catch (SQLException ex) {
 					ex.printStackTrace();
 					out.println("Erreur de modification de la base de donn&eacute;e");
