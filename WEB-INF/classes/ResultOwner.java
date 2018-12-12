@@ -81,7 +81,7 @@ public class ResultOwner extends HttpServlet
 		     }
 		     
 		     out.print("<td>");
-		     out.print("<div class=\"box\"><input type=\"checkbox\" name=\""+rs.getString(rsMeta.getColumnName(2))+"\" value=\"ok\"></div>");
+		     out.print("<div class=\"box\"><input type=\"checkbox\" name=\""+rs.getString(rsMeta.getColumnName(5))+"\" value=\"ok\"></div>");
 		     out.print("</td>");
 		     out.print("</tr>");
 		 }

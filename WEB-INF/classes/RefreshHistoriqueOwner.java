@@ -15,7 +15,8 @@ public class RefreshHistoriqueOwner extends HttpServlet
 	throws ServletException, IOException
     {
 
-	List<String> tabNomsADelete = new ArrayList<>();
+        	PrintWriter out = res.getWriter();  
+	List<String> tabTelADelete = new ArrayList<>();
 	String delete = "";
 	int i = -1;
 	
@@ -30,22 +31,23 @@ public class RefreshHistoriqueOwner extends HttpServlet
 		// un Statement est une interface qui représente une instruction SQL
 		Statement stat = conn.createStatement();
 
-		String noms = "SELECT NOM FROM CLIENTS INNER JOIN RDV on CLIENTS.ID = RDV.IDCLIENT ORDER BY ID DESC";
-		ResultSet rs = stat.executeQuery(noms);
+		String tel = "SELECT TEL FROM CLIENTS INNER JOIN RDV on CLIENTS.ID = RDV.IDCLIENT ORDER BY ID DESC";
+		ResultSet rs = stat.executeQuery(tel);
 		while(rs.next()){
 		    
-		    if(req.getParameter(rs.getString("NOM")) != null){
+		    if(req.getParameter(rs.getString("TEL")) != null){
 			i++;
-			tabNomsADelete.add(rs.getString("NOM"));
+			tabTelADelete.add(rs.getString("TEL"));
+			out.println(tabTelADelete.get(i));
 		    }
 		}
 		rs.close();
 
 		
-		for(String nom : tabNomsADelete){
+		for(String tele : tabTelADelete){
 		     
-		    delete = "delete from CLIENTS where NOM = (select NOM from CLIENTS INNER JOIN RDV ON (CLIENTS.ID = RDV.IDCLIENT)";
-		    delete += " where  CLIENTS.NOM = \""+nom+"\")";	 
+		    delete = "delete from CLIENTS where TEL = (select TEL from CLIENTS INNER JOIN RDV ON (CLIENTS.ID = RDV.IDCLIENT)";
+		    delete += " where  CLIENTS.TEL = \""+tele+"\")";	 
 		 		 
 		    // le resultat des select sont mis dans les ResultSet
 		    stat.executeUpdate(delete);
@@ -57,7 +59,7 @@ public class RefreshHistoriqueOwner extends HttpServlet
 	    
 	    }
 	    
-	    tabNomsADelete.removeAll(tabNomsADelete);
+	    tabTelADelete.removeAll(tabTelADelete);
 	    
 	}catch (ClassNotFoundException ex) {
 	    ex.printStackTrace();
