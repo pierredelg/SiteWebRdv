@@ -4,9 +4,10 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import java.sql.*;
+import java.util.*;
 
 @WebServlet("/refreshBDD")
-public class ResultOwner extends HttpServlet
+public class RefreshHistoriqueOwner extends HttpServlet
 {
 
     
@@ -14,12 +15,10 @@ public class ResultOwner extends HttpServlet
 	throws ServletException, IOException
     {
 
-	enum names = req.getParameterNames();
-
-	for(int i = 0; i < names.length(); i++){
-	    out.println("<p>"+names[i]+"</p>");
-	}
-	String nom = "";
+	List<String> tabNomsADelete = new ArrayList<>();
+	String delete = "";
+	int i = -1;
+	
 	try {
 	    // On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
 	    Class.forName("org.sqlite.JDBC");
@@ -29,25 +28,36 @@ public class ResultOwner extends HttpServlet
 	    if (conn != null) {
 		
 		// un Statement est une interface qui représente une instruction SQL
-		 Statement stat = conn.createStatement();
+		Statement stat = conn.createStatement();
 
-		 String query = "delete from CLIENTS where NOM = (select NOM from CLIENTS INNER JOIN RDV ON (CLIENTS.ID = RDV.IDCLIENT)";
-		 query += " where  CLIENTS.NOM = "+nom+")";	 
-		 		 
-		 // le resultat des select sont mis dans les ResultSet
-		 ResultSet rs = stat.executeUpdate(query);
+		String noms = "SELECT NOM FROM CLIENTS INNER JOIN RDV on CLIENTS.ID = RDV.IDCLIENT ORDER BY ID DESC";
+		ResultSet rs = stat.executeQuery(noms);
+		while(rs.next()){
+		    
+		    if(req.getParameter(rs.getString("NOM")) != null){
+			i++;
+			tabNomsADelete.add(rs.getString("NOM"));
+		    }
+		}
+		rs.close();
+
 		
-
-	
-		 //mm requete que rdv sur nom
-		 //tableau
+		for(String nom : tabNomsADelete){
 		     
-	       		
-		 rs.close();
-		 stat.close();
-		 conn.close();
+		    delete = "delete from CLIENTS where NOM = (select NOM from CLIENTS INNER JOIN RDV ON (CLIENTS.ID = RDV.IDCLIENT)";
+		    delete += " where  CLIENTS.NOM = \""+nom+"\")";	 
+		 		 
+		    // le resultat des select sont mis dans les ResultSet
+		    stat.executeUpdate(delete);
+		}
+			
+		 
+		stat.close();
+		conn.close();
 	    
 	    }
+	    
+	    tabNomsADelete.removeAll(tabNomsADelete);
 	    
 	}catch (ClassNotFoundException ex) {
 	    ex.printStackTrace();
@@ -56,10 +66,10 @@ public class ResultOwner extends HttpServlet
 	    ex.printStackTrace();
 	}
 
-	
+       	res.sendRedirect("historiqueOwner");
     }
 }
 
 
 
-//res.sendRedirect("historiqueOwner");
+

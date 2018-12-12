@@ -103,8 +103,8 @@ public class ResultOwner extends HttpServlet
 	out.println("</table>");
 	out.println("<div class=\"supprimer\">");
 	out.println("<button>Delete</button>");
-	out.println("</form>");
 	out.println("</div>");
+	out.println("</form>");
 	out.println("</main>");   
 	out.println("</body></html> ");
     }
