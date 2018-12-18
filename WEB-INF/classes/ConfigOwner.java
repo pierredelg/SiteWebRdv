@@ -8,37 +8,37 @@ import java.sql.*;
 @WebServlet("/configOwner")
 public class ConfigOwner extends HttpServlet
 {
-	public void service( HttpServletRequest req, HttpServletResponse res ) 
+    public void service( HttpServletRequest req, HttpServletResponse res ) 
 	throws ServletException, IOException
-	{
+    {
 
-		String nomEntreprise = req.getParameter("nomE");
+	String nomEntreprise = req.getParameter("nomE");
 
-		String adresseEntreprise = req.getParameter("adresseE");
+	String adresseEntreprise = req.getParameter("adresseE");
 
-		String emailEntreprise = req.getParameter("emailE");
+	String emailEntreprise = req.getParameter("emailE");
 
-		String telephoneEntreprise = req.getParameter("telephoneE");
+	String telephoneEntreprise = req.getParameter("telephoneE");
 
-		String textBienvenue = req.getParameter("textBienvenueE");
+	String textBienvenue = req.getParameter("textBienvenueE");
 
         String urlImage = req.getParameter("urlImage");
 
-		String horaireLundi = req.getParameter("horaireLundi");
+	String horaireLundi = req.getParameter("horaireLundi");
 
-		String horaireMardi = req.getParameter("horaireMardi");
+	String horaireMardi = req.getParameter("horaireMardi");
 
-		String horaireMercredi = req.getParameter("horaireMercredi");
+	String horaireMercredi = req.getParameter("horaireMercredi");
 
-		String horaireJeudi = req.getParameter("horaireJeudi");
+	String horaireJeudi = req.getParameter("horaireJeudi");
 
-		String horaireVendredi = req.getParameter("horaireVendredi");
+	String horaireVendredi = req.getParameter("horaireVendredi");
 
-		String horaireSamedi = req.getParameter("horaireSamedi");
+	String horaireSamedi = req.getParameter("horaireSamedi");
 
-		String horaireDimanche = req.getParameter("horaireDimanche");
+	String horaireDimanche = req.getParameter("horaireDimanche");
 
-		PrintWriter out = res.getWriter();
+	PrintWriter out = res.getWriter();
 
         String nom = "";
         String adresse = "";
@@ -56,55 +56,55 @@ public class ConfigOwner extends HttpServlet
 
 
         out.println("<!doctype html>");
-		out.println("<html lang=\"fr\">");
-		out.println("");
-		out.println("<head>");
-		out.println("<meta charset=\"UTF-8\">");
-		out.println("<link rel=\"stylesheet\" href=\"/projetWeb/style/resultform.css\"/>");
-		out.println("<title>R&eacute;sultat de la Configuration</title>");
-		out.println("</head>");
-		out.println("<body>");
-		out.println("<header>");
-		out.println("<nav>");
-		out.println("<ul>");
-		out.println("<li><a href=\"http://localhost:8080/projetWeb/servletOwner\">Accueil</a></li>");
-		out.println("<li><a href=\"http://localhost:8080/projetWeb/configowner.html\">Configuration</a></li>");
-		out.println("<li><a href=\"http://localhost:8080/projetWeb/historiqueOwner\">Rendez-vous</a></li>");
-		out.println("<li><a href=\"http://localhost:8080/projetWeb/changedPassOwner.html\">Mot de passe</a></li>");
-		out.println("<li><a href=\"http://localhost:8080/projetWeb/login.html\">Log out</a></li>");
-		out.println("</ul>");
-		out.println("</nav>");
-		out.println("</header>");
-		out.println("<main>");
+	out.println("<html lang=\"fr\">");
+	out.println("");
+	out.println("<head>");
+	out.println("<meta charset=\"UTF-8\">");
+	out.println("<link rel=\"stylesheet\" href=\"/projetWeb/style/resultform.css\"/>");
+	out.println("<title>R&eacute;sultat de la Configuration</title>");
+	out.println("</head>");
+	out.println("<body>");
+	out.println("<header>");
+	out.println("<nav>");
+	out.println("<ul>");
+	out.println("<li><a href=\"http://localhost:8080/projetWeb/servletOwner\">Accueil</a></li>");
+	out.println("<li><a href=\"http://localhost:8080/projetWeb/configowner.html\">Configuration</a></li>");
+	out.println("<li><a href=\"http://localhost:8080/projetWeb/historiqueOwner\">Rendez-vous</a></li>");
+	out.println("<li><a href=\"http://localhost:8080/projetWeb/changedPassOwner.html\">Mot de passe</a></li>");
+	out.println("<li><a href=\"http://localhost:8080/projetWeb/login.html\">Déconnexion</a></li>");
+	out.println("</ul>");
+	out.println("</nav>");
+	out.println("</header>");
+	out.println("<main>");
 
-		if(nomEntreprise.equals("") && adresseEntreprise.equals("") && emailEntreprise.equals("") && telephoneEntreprise.equals("") && textBienvenue.equals("") && urlImage.equals("") && horaireLundi.equals("") && horaireMardi.equals("") && horaireMercredi.equals("") && horaireJeudi.equals("") && horaireVendredi.equals("") && horaireSamedi.equals("") && horaireDimanche.equals("")){
-			out.println("<div>");
-			out.println("<h1> Erreur </h1> ");
-			out.println("<p>Aucun champ de formulaire rempli</p>");
-			out.println("</div>");
-		}
-		else{
+	if(nomEntreprise.equals("") && adresseEntreprise.equals("") && emailEntreprise.equals("") && telephoneEntreprise.equals("") && textBienvenue.equals("") && urlImage.equals("") && horaireLundi.equals("") && horaireMardi.equals("") && horaireMercredi.equals("") && horaireJeudi.equals("") && horaireVendredi.equals("") && horaireSamedi.equals("") && horaireDimanche.equals("")){
+	    out.println("<div>");
+	    out.println("<h1> Erreur </h1> ");
+	    out.println("<p>Aucun champ de formulaire rempli</p>");
+	    out.println("</div>");
+	}
+	else{
 
-			ResultSet rs = null;
-			Connection conn = null;
+	    ResultSet rs = null;
+	    Connection conn = null;
             Statement stat = null;
 
             try {
-    			// On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
-				Class.forName("org.sqlite.JDBC");
-				String dbURL = "jdbc:sqlite:../webapps/projetWeb/BDD/data.db";
-        		//On essaye de se connecter à la base
-				conn = DriverManager.getConnection(dbURL);
+		// On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
+		Class.forName("org.sqlite.JDBC");
+		String dbURL = "jdbc:sqlite:../webapps/projetWeb/BDD/data.db";
+		//On essaye de se connecter à la base
+		conn = DriverManager.getConnection(dbURL);
 
-			} 
-			catch (Exception ex) {
+	    } 
+	    catch (Exception ex) {
 
-				ex.printStackTrace();
-				out.println("Erreur de connexion dans base de donn&eacute;es");
-			}
-			if(conn != null){
+		ex.printStackTrace();
+		out.println("Erreur de connexion dans base de donn&eacute;es");
+	    }
+	    if(conn != null){
 
-			    out.println("<div>");
+		out.println("<div>");
                 out.println("<h1>Les changements sont pris en compte</h1> ");
                 out.println("</div>");
                 out.println("<section class=\"info\">");
@@ -119,10 +119,10 @@ public class ConfigOwner extends HttpServlet
                 }
                 catch (SQLException ex) {
                     ex.printStackTrace();
-                    out.println("Erreur de consultation dans la base de donn&eacute;es");
+                    out.println("Erreur de création dans la base de donn&eacute;es");
                 }
 
-				try{
+		try{
 
                     rs = stat.executeQuery("SELECT * FROM MAGASIN;");
 
@@ -133,7 +133,7 @@ public class ConfigOwner extends HttpServlet
                 }
                 try {
 
-					while(rs.next()){
+		    while(rs.next()){
                         nom = rs.getString("NOM");
                         adresse = rs.getString("ADRESSE");
                         mail = rs.getString("EMAIL");
@@ -147,12 +147,14 @@ public class ConfigOwner extends HttpServlet
                         vendredi = rs.getString("VENDREDI");
                         samedi = rs.getString("SAMEDI");
                         dimanche = rs.getString("DIMANCHE");
-					}
+		    }
 
                 }catch (SQLException ex) {
                     ex.printStackTrace();
                     out.println("Erreur de r&eacute;cup&eacute;ration dans la base de donn&eacute;e");
+		    
                 }try {
+		  
                     if(!nomEntreprise.equals("")) {
                         if(nom.equals("")){
                             stat.executeUpdate("INSERT INTO MAGASIN(NOM) VALUES( '"+ nomEntreprise +"');");
@@ -163,11 +165,11 @@ public class ConfigOwner extends HttpServlet
                     }
 
                     if(!adresseEntreprise.equals("")) {
-                        if(adresse.equals("")){
+			 if(adresse.equals("")){
                             stat.executeUpdate("INSERT INTO MAGASIN(ADRESSE) VALUES( '"+ adresseEntreprise +"');");
-                        }else{
+			    }else{
                             stat.executeUpdate("UPDATE MAGASIN SET ADRESSE = REPLACE(ADRESSE,'" + adresse + "','" + adresseEntreprise + "');");
-                        }
+			  }
                         out.println("<li>Adresse de l'entreprise : " + adresseEntreprise + "</li>");
                     }
 
@@ -175,17 +177,19 @@ public class ConfigOwner extends HttpServlet
                         if(mail.equals("")){
                             stat.executeUpdate("INSERT INTO MAGASIN(EMAIL) VALUES( '"+ emailEntreprise +"');");
                         }else{
-                        stat.executeUpdate("UPDATE MAGASIN SET EMAIL = REPLACE(EMAIL,'"+ mail +"','"+emailEntreprise+"');");
-                    }
+			    stat.executeUpdate("UPDATE MAGASIN SET EMAIL = REPLACE(EMAIL,'"+ mail +"','"+emailEntreprise+"');");
+			}
                         out.println("<li>Email de l'entreprise : "+ emailEntreprise + "</li>");
                     }
 
                     if(!telephoneEntreprise.equals("")){
                         if(tel.equals("")){
+			      out.println("INSERT INTO MAGASIN(TEL) VALUES( '"+ telephoneEntreprise +"');");
                             stat.executeUpdate("INSERT INTO MAGASIN(TEL) VALUES( '"+ telephoneEntreprise +"');");
+			    //  out.println("INSERT INTO MAGASIN(TEL) VALUES( '"+ telephoneEntreprise +"');");
                         }else{
-                        stat.executeUpdate("UPDATE MAGASIN SET TEL = REPLACE(TEL,'"+ tel +"','"+telephoneEntreprise+"');");
-                    }
+			    stat.executeUpdate("UPDATE MAGASIN SET TEL = REPLACE(TEL,'"+ tel +"','"+telephoneEntreprise+"');");
+			}
                         out.println("<li>T&eacute;l&eacute;phone de l'entreprise : "+ telephoneEntreprise + "</li>");
                     }
 
@@ -193,8 +197,8 @@ public class ConfigOwner extends HttpServlet
                         if(text.equals("")){
                             stat.executeUpdate("INSERT INTO MAGASIN(TEXTEBIENVENUE) VALUES( '"+ textBienvenue +"');");
                         }else{
-                        stat.executeUpdate("UPDATE MAGASIN SET TEXTEBIENVENUE = REPLACE(TEXTEBIENVENUE,'"+text+"','"+textBienvenue+"');");
-                    }
+			    stat.executeUpdate("UPDATE MAGASIN SET TEXTEBIENVENUE = REPLACE(TEXTEBIENVENUE,'"+text+"','"+textBienvenue+"');");
+			}
                         out.println("<li>Votre texte de bienvenue sur le site de l'entreprise : "+ textBienvenue + "</li>");
                     }
 
@@ -202,8 +206,8 @@ public class ConfigOwner extends HttpServlet
                         if(url.equals("")){
                             stat.executeUpdate("INSERT INTO MAGASIN(URLIMAGE) VALUES( '"+ urlImage +"');");
                         }else{
-                        stat.executeUpdate("UPDATE MAGASIN SET URLIMAGE = REPLACE(URLIMAGE,'"+url+"','"+urlImage+"');");
-                    }
+			    stat.executeUpdate("UPDATE MAGASIN SET URLIMAGE = REPLACE(URLIMAGE,'"+url+"','"+urlImage+"');");
+			}
                         out.println("<li>L'url de l'image de page d'accueil : "+ urlImage + "</li>");
                     }
 
@@ -217,8 +221,8 @@ public class ConfigOwner extends HttpServlet
                         if(lundi.equals("")){
                             stat.executeUpdate("INSERT INTO MAGASIN(LUNDI) VALUES( '"+ horaireLundi +"');");
                         }else{
-                        stat.executeUpdate("UPDATE MAGASIN SET LUNDI = REPLACE(LUNDI,'"+lundi+"','"+horaireLundi+"');");
-                    }
+			    stat.executeUpdate("UPDATE MAGASIN SET LUNDI = REPLACE(LUNDI,'"+lundi+"','"+horaireLundi+"');");
+			}
                         out.println("<li>Lundi : "+ horaireLundi + "</li>");
                     }
 
@@ -226,8 +230,8 @@ public class ConfigOwner extends HttpServlet
                         if(mardi.equals("")){
                             stat.executeUpdate("INSERT INTO MAGASIN(MARDI) VALUES( '"+ horaireMardi +"');");
                         }else{
-                        stat.executeUpdate("UPDATE MAGASIN SET MARDI = REPLACE(MARDI,'"+mardi+"','"+horaireMardi+"');");
-                    }
+			    stat.executeUpdate("UPDATE MAGASIN SET MARDI = REPLACE(MARDI,'"+mardi+"','"+horaireMardi+"');");
+			}
                         out.println("<li>Mardi : "+ horaireMardi + "</li>");
                     }
 
@@ -235,8 +239,8 @@ public class ConfigOwner extends HttpServlet
                         if(mercredi.equals("")){
                             stat.executeUpdate("INSERT INTO MAGASIN(MERCREDI) VALUES( '"+ horaireMercredi +"');");
                         }else{
-                        stat.executeUpdate("UPDATE MAGASIN SET MERCREDI = REPLACE(MERCREDI,'" + mercredi + "','" + horaireMercredi + "');");
-                    }
+			    stat.executeUpdate("UPDATE MAGASIN SET MERCREDI = REPLACE(MERCREDI,'" + mercredi + "','" + horaireMercredi + "');");
+			}
                         out.println("<li>Mercredi : " + horaireMercredi + "</li>");
                     }
 
@@ -244,8 +248,8 @@ public class ConfigOwner extends HttpServlet
                         if(jeudi.equals("")){
                             stat.executeUpdate("INSERT INTO MAGASIN(JEUDI) VALUES( '"+ horaireJeudi +"');");
                         }else{
-                        stat.executeUpdate("UPDATE MAGASIN SET JEUDI = REPLACE(JEUDI,'"+jeudi+"','"+horaireJeudi+"');");
-                    }
+			    stat.executeUpdate("UPDATE MAGASIN SET JEUDI = REPLACE(JEUDI,'"+jeudi+"','"+horaireJeudi+"');");
+			}
                         out.println("<li>Jeudi : "+ horaireJeudi + "</li>");
                     }
 
@@ -253,8 +257,8 @@ public class ConfigOwner extends HttpServlet
                         if(vendredi.equals("")){
                             stat.executeUpdate("INSERT INTO MAGASIN(VENDREDI) VALUES( '"+ horaireVendredi +"');");
                         }else{
-                        stat.executeUpdate("UPDATE MAGASIN SET VENDREDI = REPLACE(VENDREDI,'"+vendredi+"','"+horaireVendredi+"');");
-                    }
+			    stat.executeUpdate("UPDATE MAGASIN SET VENDREDI = REPLACE(VENDREDI,'"+vendredi+"','"+horaireVendredi+"');");
+			}
                         out.println("<li>Vendredi : "+ horaireVendredi + "</li>");
                     }
 
@@ -262,31 +266,31 @@ public class ConfigOwner extends HttpServlet
                         if(samedi.equals("")){
                             stat.executeUpdate("INSERT INTO MAGASIN(SAMEDI) VALUES( '"+ horaireSamedi +"');");
                         }else{
-                        stat.executeUpdate("UPDATE MAGASIN SET SAMEDI = REPLACE(SAMEDI,'"+samedi+"','"+horaireSamedi+"');");
-                    }
+			    stat.executeUpdate("UPDATE MAGASIN SET SAMEDI = REPLACE(SAMEDI,'"+samedi+"','"+horaireSamedi+"');");
+			}
                         out.println("<li>Samedi : "+ horaireSamedi + "</li>");
                     }
 
                     if(!horaireDimanche.equals("")){
                         if(dimanche.equals("")){
-                            stat.executeUpdate("INSERT INTO MAGASIN(DIMANCHE) VALUES( '"+ horaireDimanche +"'');");
+                            stat.executeUpdate("INSERT INTO MAGASIN(DIMANCHE) VALUES( '"+ horaireDimanche +"');");
                         }else{
-                        stat.executeUpdate("UPDATE MAGASIN SET DIMANCHE = REPLACE(DIMANCHE,'"+dimanche+"','"+horaireDimanche+"');");
-                    }
+			    stat.executeUpdate("UPDATE MAGASIN SET DIMANCHE = REPLACE(DIMANCHE,'"+dimanche+"','"+horaireDimanche+"');");
+			}
                         out.println("<li>Dimanche : "+ horaireDimanche + "</li>");
                     }
 
                     out.println("</ul>");
                     out.println("</section>");
 
-				}catch (SQLException ex) {
-					ex.printStackTrace();
-					out.println("Erreur de modification de la base de donn&eacute;e");
-				}
-			}
-			out.println("</main>");
-			out.println("</body>");
-			out.println("</html>");
+		}catch (SQLException ex) {
+		    ex.printStackTrace();
+		    out.println("Erreur de modification de la base de donn&eacute;e");
 		}
+	    }
+	    out.println("</main>");
+	    out.println("</body>");
+	    out.println("</html>");
 	}
+    }
 }
