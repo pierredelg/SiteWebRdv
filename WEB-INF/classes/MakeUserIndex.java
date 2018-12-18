@@ -3,7 +3,9 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import java.sql.*;
-
+/*
+Servlet créant la page d'accueil coté Client
+*/
 @WebServlet("/Index")
 public class MakeUserIndex extends HttpServlet
 {
@@ -19,9 +21,9 @@ public class MakeUserIndex extends HttpServlet
         PrintWriter out = res.getWriter();
 
         try {
-            // On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
-            Class.forName("org.sqlite.JDBC");
+            // On déclare le type de driver JDBC et le chemin d’accès à la base
             String dbURL = "jdbc:sqlite:../webapps/projetWeb/BDD/data.db";
+
             //On essaye de se connecter à la base
             conn = DriverManager.getConnection(dbURL);
 
@@ -29,21 +31,21 @@ public class MakeUserIndex extends HttpServlet
         catch (Exception ex) {
 
             ex.printStackTrace();
-            out.println("Erreur de connexion dans base de donn&eacute;es");
+            out.println("Erreur de connexion dans base de donnees");
         }
         try{
-
+            //On initialise le statement pour executer les requetes dans la base
             stat = conn.createStatement();
-
+            //On selectionne le nom l'image et le texte de bienvenue dans la table
             rs = stat.executeQuery("SELECT NOM,TEXTEBIENVENUE,URLIMAGE FROM MAGASIN;");
 
         }
         catch (SQLException ex) {
             ex.printStackTrace();
-            out.println("Erreur de consultation dans la base de donn&eacute;es");
+            out.println("Erreur de consultation dans la base de donnees");
         }
         try {
-
+            //On récupere les données dans les variables
             while(rs.next()){
                 nomEntreprise = rs.getString("NOM");
                 texteBienvenue = rs.getString("TEXTEBIENVENUE");
@@ -52,8 +54,10 @@ public class MakeUserIndex extends HttpServlet
 
         }catch (SQLException ex) {
             ex.printStackTrace();
-            out.println("Erreur de r&eacute;cup&eacute;ration dans la base de donn&eacute;e");
+            out.println("Erreur de recuperation dans la base de donnee");
         }
+        
+        //On genere une page html en intégrant les variables récupérées dans la base de données
 
         out.println("<!doctype html>");
         out.println("<html lang=\"fr\">");
