@@ -32,26 +32,27 @@ public class RefreshHistoriqueOwner extends HttpServlet
 		
 		// un Statement est une interface qui représente une instruction SQL
 		Statement stat = conn.createStatement();
-
+		
+		//Requete permettant de selectionner les données de la table par numero de téléphone
 		String tel = "SELECT TEL FROM CLIENTS INNER JOIN RDV on CLIENTS.ID = RDV.IDCLIENT ORDER BY ID DESC";
 		ResultSet rs = stat.executeQuery(tel);
 		while(rs.next()){
 		    
 		    if(req.getParameter(rs.getString("TEL")) != null){
-			i++;
-			tabTelADelete.add(rs.getString("TEL"));
-			out.println(tabTelADelete.get(i));
+				i++;
+				//on ajoute les numero de telephone à supprimer dans le tableau
+				tabTelADelete.add(rs.getString("TEL"));
+				out.println(tabTelADelete.get(i));
 		    }
 		}
 		rs.close();
 
-		
+		//on supprime les données de la base
 		for(String tele : tabTelADelete){
 		     
 		    delete = "delete from CLIENTS where TEL = (select TEL from CLIENTS INNER JOIN RDV ON (CLIENTS.ID = RDV.IDCLIENT)";
 		    delete += " where  CLIENTS.TEL = \""+tele+"\")";	 
 		 		 
-		    // le resultat des select sont mis dans les ResultSet
 		    stat.executeUpdate(delete);
 		}
 			

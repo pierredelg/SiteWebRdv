@@ -29,79 +29,66 @@ public class ResultFormUser extends HttpServlet{
     String preferenceAprem = req.getParameter("preferenceAprem");
 
     //On remplace les caracteres dangereux recus dans le formulaire
-    nom.replace('\'',' ');
-    nom.replace('"',' ');
-    nom.replace('<',' ');
-    nom.replace('>',' ');
-    prenom.replace('\'',' ');
-    prenom.replace('"',' ');
-    prenom.replace('<',' ');
-    prenom.replace('>',' ');
-    email.replace('\'',' ');
-    email.replace('"',' ');
-    email.replace('<',' ');
-    email.replace('>',' ');
-    telephone.replace('\'',' ');
-    telephone.replace('"',' ');
-    telephone.replace('<',' ');
-    telephone.replace('>',' ');
-    preferenceRappel.replace('\'',' ');
-    preferenceRappel.replace('"',' ');
-    preferenceRappel.replace('<',' ');
-    preferenceRappel.replace('>',' ');
-    preferenceLundi.replace('\'',' ');
-    preferenceLundi.replace('"',' ');
-    preferenceLundi.replace('<',' ');
-    preferenceLundi.replace('>',' ');
-    preferenceMardi.replace('\'',' ');
-    preferenceMardi.replace('"',' ');
-    preferenceMardi.replace('<',' ');
-    preferenceMardi.replace('>',' ');
-    preferenceMercredi.replace('\'',' ');
-    preferenceMercredi.replace('"',' ');
-    preferenceMercredi.replace('<',' ');
-    preferenceMercredi.replace('>',' ');
-    preferenceJeudi.replace('\'',' ');
-    preferenceJeudi.replace('"',' ');
-    preferenceJeudi.replace('<',' ');
-    preferenceJeudi.replace('>',' ');
-    preferenceVendredi.replace('\'',' ');
-    preferenceVendredi.replace('"',' ');
-    preferenceVendredi.replace('<',' ');
-    preferenceVendredi.replace('>',' ');
-    preferenceSamedi.replace('\'',' ');
-    preferenceSamedi.replace('"',' ');
-    preferenceSamedi.replace('<',' ');
-    preferenceSamedi.replace('>',' ');
-    preferenceMatin.replace('\'',' ');
-    preferenceMatin.replace('"',' ');
-    preferenceMatin.replace('<',' ');
-    preferenceMatin.replace('>',' ');
-    preferenceAprem.replace('\'',' ');
-    preferenceAprem.replace('"',' ');
-    preferenceAprem.replace('<',' ');
-    preferenceAprem.replace('>',' ');
+    nom = nom.replace('\'',' ');
+    nom = nom.replace('"',' ');
+    nom = nom.replace('<',' ');
+    nom = nom.replace('>',' ');
+    prenom = prenom.replace('\'',' ');
+    prenom = prenom.replace('"',' ');
+    prenom = prenom.replace('<',' ');
+    prenom = prenom.replace('>',' ');
+    email = email.replace('\'',' ');
+    email = email.replace('"',' ');
+    email = email.replace('<',' ');
+    email = email.replace('>',' ');
+    telephone = telephone.replace('\'',' ');
+    telephone = telephone.replace('"',' ');
+    telephone = telephone.replace('<',' ');
+    telephone = telephone.replace('>',' ');
+    preferenceRappel = preferenceRappel.replace('\'',' ');
+    preferenceRappel = preferenceRappel.replace('"',' ');
+    preferenceRappel = preferenceRappel.replace('<',' ');
+    preferenceRappel = preferenceRappel.replace('>',' ');
+    preferenceLundi = preferenceLundi.replace('\'',' ');
+    preferenceLundi = preferenceLundi.replace('"',' ');
+    preferenceLundi = preferenceLundi.replace('<',' ');
+    preferenceLundi = preferenceLundi.replace('>',' ');
+    preferenceMardi = preferenceMardi.replace('\'',' ');
+    preferenceMardi = preferenceMardi.replace('"',' ');
+    preferenceMardi = preferenceMardi.replace('<',' ');
+    preferenceMardi = preferenceMardi.replace('>',' ');
+    preferenceMercredi = preferenceMercredi.replace('\'',' ');
+    preferenceMercredi = preferenceMercredi.replace('"',' ');
+    preferenceMercredi = preferenceMercredi.replace('<',' ');
+    preferenceMercredi = preferenceMercredi.replace('>',' ');
+    preferenceJeudi = preferenceJeudi.replace('\'',' ');
+    preferenceJeudi = preferenceJeudi.replace('"',' ');
+    preferenceJeudi = preferenceJeudi.replace('<',' ');
+    preferenceJeudi = preferenceJeudi.replace('>',' ');
+    preferenceVendredi = preferenceVendredi.replace('\'',' ');
+    preferenceVendredi = preferenceVendredi.replace('"',' ');
+    preferenceVendredi = preferenceVendredi.replace('<',' ');
+    preferenceVendredi = preferenceVendredi.replace('>',' ');
+    preferenceSamedi = preferenceSamedi.replace('\'',' ');
+    preferenceSamedi = preferenceSamedi.replace('"',' ');
+    preferenceSamedi = preferenceSamedi.replace('<',' ');
+    preferenceSamedi = preferenceSamedi.replace('>',' ');
+    preferenceMatin = preferenceMatin.replace('\'',' ');
+    preferenceMatin = preferenceMatin.replace('"',' ');
+    preferenceMatin = preferenceMatin.replace('<',' ');
+    preferenceMatin = preferenceMatin.replace('>',' ');
+    preferenceAprem = preferenceAprem.replace('\'',' ');
+    preferenceAprem = preferenceAprem.replace('"',' ');
+    preferenceAprem = preferenceAprem.replace('<',' ');
+    preferenceAprem = preferenceAprem.replace('>',' ');
 
 
     boolean correct = true; 
-    int id = 1;
-    int idrdv = 0;
     int idjava = 0;
-    String nomjava = null;
-    String prenomjava = null;
-    String emailjava = null;
-    String telephonejava = null;
-    String preferenceRappeljava = null;
-    String prefMatin = null;
-    String prefAprem = null;
-    String prefLundi = null;
-    String prefMardi = null;
-    String prefMercredi = null;
-    String prefJeudi = null;
-    String prefVendredi = null;
-    String prefSamedi = null;
 
     PrintWriter out = res.getWriter();
+
+    //On genere un page HTML avec les résultats du formulaire
 
     out.println("<!doctype html>");
     out.println("<html lang=\"fr\">");
@@ -199,6 +186,9 @@ public class ResultFormUser extends HttpServlet{
     out.println("</section>");
     out.println("<section class=\"contact\">");
     
+
+    //Si aucun moyen de rappel n'est renseigné on affiche un message d'erreur 
+    //et on passe le booléen correct a false
     if(telephone.equals("") && email.equals("")){
       correct = false;
       out.println("<h2>Veuillez ressaisir le formulaire de rendez-vous</h2>");
@@ -213,8 +203,9 @@ public class ResultFormUser extends HttpServlet{
     Connection conn = null;
     Statement stat = null;
     try {
+      //si tout est correct on essaye de se connecter
       if (correct = true){
-        // On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
+        // On déclare le type de driver JDBC et le chemin d’accès à la base
         Class.forName("org.sqlite.JDBC");
         String dbURL = "jdbc:sqlite:../webapps/projetWeb/BDD/data.db";
         //On essaye de se connecter à la base
@@ -232,9 +223,9 @@ public class ResultFormUser extends HttpServlet{
     }
     try {
       if (conn != null) {
-          // un Statement est une interface qui représente une instruction SQL
+         //On initialise le statement pour executer les requetes dans la base
         stat = conn.createStatement();
-
+         //On crée la table si elle n'existe pas
         stat.executeUpdate("CREATE TABLE IF NOT EXISTS CLIENTS(ID INTEGER PRIMARY KEY AUTOINCREMENT,NOM VARCHAR(50),PRENOM VARCHAR(50),EMAIL VARCHAR(20),TEL VARCHAR(20),RAPPEL_PAR VARCHAR(20));");
       }
     } 
@@ -243,6 +234,7 @@ public class ResultFormUser extends HttpServlet{
       out.println("Erreur de cr&eacute;ation dans la base de donnée");
     }
     try {
+      //On insere les données dans la table
       stat.executeUpdate("INSERT INTO CLIENTS(NOM,PRENOM,EMAIL,TEL,RAPPEL_PAR) VALUES('" + nom + "','" + prenom +"','" + email +"','" + telephone + "','" + preferenceRappel + "');");
     } 
     catch (SQLException ex) {
@@ -252,7 +244,7 @@ public class ResultFormUser extends HttpServlet{
     try {
            // On fait une nouvelle requete
 
-      rs = stat.executeQuery( "SELECT * FROM CLIENTS;" );
+      rs = stat.executeQuery( "SELECT ID FROM CLIENTS;" );
 
     }  
     catch (SQLException ex) {
@@ -260,16 +252,9 @@ public class ResultFormUser extends HttpServlet{
       out.println("Erreur de consultation dans la base de donn&eacute;es");
     }
     try {
-          //On récupere chaque information de la base        
+          //On récupere l'id client de la base        
       while (rs.next()) {
-
-        idjava = rs.getInt("ID");
-        nomjava = rs.getString("NOM");
-        prenomjava = rs.getString("PRENOM");
-        emailjava = rs.getString("EMAIL");
-        telephonejava = rs.getString("TEL");
-        preferenceRappeljava = rs.getString("RAPPEL_PAR");
-        out.println( "ID = " + idjava+" Prenom = "+prenomjava+" Nom = "+nomjava + " email = "+ emailjava + " tel ="+ telephonejava + " preference de Rappel = " + preferenceRappeljava );
+        idjava = rs.getInt("ID"); 
       }
 
     } 
@@ -278,6 +263,7 @@ public class ResultFormUser extends HttpServlet{
       out.println("Erreur de r&eacute;cup&eacute;ration dans la base de donn&eacute;es");
     } 
     try {
+      //On crée la table si elle n'existe pas
       stat.executeUpdate("CREATE TABLE IF NOT EXISTS RDV(IDCLIENT INT NOT NULL,LUNDI VCHAR(20),MARDI VCHAR(20),MERCREDI VCHAR(20),JEUDI VCHAR(20),VENDREDI VCHAR(20),SAMEDI VCHAR(20),MATIN VCHAR(20),APREM VCHAR(20));");
 
     } 
@@ -286,6 +272,7 @@ public class ResultFormUser extends HttpServlet{
       out.println("Erreur de cr&eacute;ation dans la base de donn&eacute;es");
     }
     try {
+      //On insere les valeurs dans la table 
       stat.executeUpdate("INSERT INTO RDV VALUES(" + idjava + ",'" + preferenceLundi + "','" + preferenceMardi + "','" + preferenceMercredi + "','" + preferenceJeudi + "','" + preferenceVendredi + "','" + preferenceSamedi + "','" + preferenceMatin + "','" + preferenceAprem + "');");
 
     } 
@@ -293,32 +280,7 @@ public class ResultFormUser extends HttpServlet{
     ex.printStackTrace();
     out.println("Erreur d'insertion dans la base de donn&eacute;es");
   }
-  try {
-          //On récupere les infos de la table RDV pour vérifier
-    rs = stat.executeQuery( "SELECT * FROM RDV;");
-    
-  }
-  catch (SQLException ex) {
-   ex.printStackTrace();
-   out.println("Erreur de consultation dans la base de donn&eacute;es");
- }
- try {
-  while (rs.next()) {
-    idrdv = rs.getInt("IDCLIENT");
-    prefLundi=rs.getString("LUNDI");
-    prefMardi=rs.getString("MARDI");
-    prefMercredi=rs.getString("MERCREDI");
-    prefJeudi=rs.getString("JEUDI");
-    prefVendredi=rs.getString("VENDREDI");
-    prefSamedi=rs.getString("SAMEDI");
-    prefMatin=rs.getString("MATIN");
-    prefAprem=rs.getString("APREM");
-  }
-}
-catch (SQLException ex) {
- ex.printStackTrace();
- out.println("Erreur de r&eacute;cup&eacute;ration dans la base de donn&eacute;es");
-}
+  
 try{
   // On ferme les connexions au ResultSet, Statement et à la base
   rs.close();

@@ -1,10 +1,11 @@
-// ServletOwner.java 
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import java.sql.*;
-
+/*
+Servlet qui permet d'afficher coté Administrateur les résultats des formulaires de rendez-vous remplis du coté client
+*/
 @WebServlet("/historiqueOwner")
 public class ResultOwner extends HttpServlet
 {
@@ -30,7 +31,7 @@ public class ResultOwner extends HttpServlet
 	out.println("<li><a href=\"http://localhost:8080/projetWeb/configowner.html\">Configuration</a></li>");
 	out.println("<li><a href=\"http://localhost:8080/projetWeb/historiqueOwner\">Rendez-vous</a></li>");
 	out.println("<li><a href=\"http://localhost:8080/projetWeb/changedPassOwner.html\">Mot de passe</a></li>");
-	out.println("<li><a href=\"http://localhost:8080/projetWeb/login.html\">D&eacute;connexion</a></li>");
+	out.println("<li><a href=\"http://localhost:8080/projetWeb/login.html\">Deconnexion</a></li>");
 	out.println("</ul>");
 	out.println("</nav>");
 	out.println("</header>");
@@ -40,7 +41,7 @@ public class ResultOwner extends HttpServlet
 	out.println("<table>");
 
 	try {
-	    // On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
+	    // On déclare le type de driver JDBC et le chemin d’accès à la base
 	    Class.forName("org.sqlite.JDBC");
 	    String dbURL =  "jdbc:sqlite:../webapps/projetWeb/BDD/data.db";
 	    //On essaye de se connecter à la base
@@ -53,8 +54,6 @@ public class ResultOwner extends HttpServlet
 		 String query = "SELECT * FROM CLIENTS , RDV";
 		 query += " WHERE ClIENTS.ID = RDV.IDCLIENT ORDER BY ID DESC";		 
 		 
-		 
-		 // le resultat des select sont mis dans les ResultSet
 		 ResultSet rs = stat.executeQuery(query);
 		
 
@@ -98,8 +97,6 @@ public class ResultOwner extends HttpServlet
 	    ex.printStackTrace();
 	}
 
-	
-
 	out.println("</table>");
 	out.println("<div class=\"supprimer\">");
 	out.println("<button>Delete</button>");
@@ -109,7 +106,3 @@ public class ResultOwner extends HttpServlet
 	out.println("</body></html> ");
     }
 }
-
-
-//delete from CLIENTS where NOM = (select NOM from CLIENTS INNER JOIN RDV ON (CLIENTS.ID = RDV.IDCLIENT) where  CLIENTS.NOM = "atamenia");
-//res.sendRedirect("historiqueOwner");

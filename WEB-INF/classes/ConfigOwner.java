@@ -117,7 +117,7 @@ public class ConfigOwner extends HttpServlet
        out.println("<li><a href=\"http://localhost:8080/projetWeb/configowner.html\">Configuration</a></li>");
        out.println("<li><a href=\"http://localhost:8080/projetWeb/historiqueOwner\">Rendez-vous</a></li>");
        out.println("<li><a href=\"http://localhost:8080/projetWeb/changedPassOwner.html\">Mot de passe</a></li>");
-       out.println("<li><a href=\"http://localhost:8080/projetWeb/login.html\">D&eacute;connexion</a></li>");
+       out.println("<li><a href=\"http://localhost:8080/projetWeb/login.html\">Deconnexion</a></li>");
        out.println("</ul>");
        out.println("</nav>");
        out.println("</header>");
@@ -164,7 +164,7 @@ public class ConfigOwner extends HttpServlet
                     //On initialise le statement pour executer les requetes dans la base
                     stat = conn.createStatement();
 
-                    //On crée une table si elle n'existe pas
+                    //On crée la table si elle n'existe pas
                     stat.executeUpdate("CREATE TABLE IF NOT EXISTS MAGASIN(NOM TEXT,ADRESSE TEXT,EMAIL TEXT,TEL TEXT,TEXTEBIENVENUE TEXT,URLIMAGE TEXT, LUNDI TEXT,MARDI TEXT,MERCREDI TEXT,JEUDI TEXT,VENDREDI TEXT,SAMEDI TEXT,DIMANCHE TEXT);");
 
                 }

@@ -3,7 +3,9 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import java.sql.*;
-
+/*
+Servlet qui permet de changer l'identifiant et le mot de passe de l'administrateur
+*/
 @WebServlet("/ChangePassOwner")
 public class ChangePassOwner extends HttpServlet
 {

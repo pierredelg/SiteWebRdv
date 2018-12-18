@@ -3,7 +3,9 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import java.sql.*;
-
+/*
+Servlet créant la page de contact coté Client
+*/
 @WebServlet("/Contact")
 public class UserContact extends HttpServlet {
 
@@ -25,9 +27,10 @@ public class UserContact extends HttpServlet {
         PrintWriter out = res.getWriter();
 
         try {
-            // On déclare le type de driver JDBC et le chemin d’accès à la base, si pb exception ClassNotFound
+            // On déclare le type de driver JDBC et le chemin d’accès à la base
             Class.forName("org.sqlite.JDBC");
             String dbURL = "jdbc:sqlite:../webapps/projetWeb/BDD/data.db";
+
             //On essaye de se connecter à la base
             conn = DriverManager.getConnection(dbURL);
 
@@ -37,14 +40,16 @@ public class UserContact extends HttpServlet {
             out.println("Erreur de connexion dans base de donn&eacute;es");
         }
         try {
+             //On initialise le statement pour executer les requetes dans la base
             stat = conn.createStatement();
+             //On selectionne les données dans la table
             rs = stat.executeQuery("SELECT ADRESSE,EMAIL,TEL,LUNDI,MARDI,MERCREDI,JEUDI,VENDREDI,SAMEDI,DIMANCHE FROM MAGASIN;");
         } catch (SQLException ex) {
             ex.printStackTrace();
             out.println("Erreur de consultation dans la base de donn&eacute;es");
         }
         try {
-
+            //On récupere les données
             while (rs.next()) {
                 adresseEntreprise = rs.getString("ADRESSE");
                 emailEntreprise = rs.getString("EMAIL");
@@ -62,7 +67,7 @@ public class UserContact extends HttpServlet {
             ex.printStackTrace();
             out.println("Erreur de r&eacute;cup&eacute;ration dans la base de donn&eacute;e");
         }
-
+         //On genere une page html en intégrant les variables récupérées dans la base de données
         out.println("<!doctype html>");
         out.println("<html lang=\"fr\">");
         out.println("");
