@@ -1,6 +1,6 @@
 #!/bin/bash
 
-unzip ProjetWeb.zip
+unzip RDV.zip
 
 javac ./webapps/projetWeb/WEB-INF/classes/*.java
 
@@ -21,9 +21,9 @@ echo "CREATE TABLE IF NOT EXISTS CLIENTS(ID INTEGER PRIMARY KEY AUTOINCREMENT,NO
 
 echo "CREATE TABLE IF NOT EXISTS RDV(IDCLIENT INT NOT NULL,LUNDI VCHAR(20),MARDI VCHAR(20),MERCREDI VCHAR(20),JEUDI VCHAR(20),VENDREDI VCHAR(20),SAMEDI VCHAR(20),MATIN VCHAR(20),APREM VCHAR(20));"  | sqlite3 "./webapps/projetWeb/BDD/data.db"
 
-cd "./bin/"
 
-"./startup.sh"
+
+sh "./startup.sh"
 
 firefox "http://localhost:8080/projetWeb/Index" && firefox "http://localhost:8080/projetWeb/login.html"
 
