@@ -3,52 +3,95 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import java.sql.*;
-
+/*
+Servlet qui receptionne le formulaire de rendez-vous coté Client
+*/
 @WebServlet("/servlet/ResultatFormulaire")
 public class ResultFormUser extends HttpServlet{
 
   public void service( HttpServletRequest req, HttpServletResponse res ) 
   throws ServletException, IOException{
 
-    PrintWriter out = res.getWriter();
-
+   
+    //On récupere les informations du formulaire
     String nom = req.getParameter("nom");
-
     String prenom = req.getParameter("prenom");
-    
     String email = req.getParameter("email");
-    
     String telephone = req.getParameter("telephone");
-
     String preferenceRappel = req.getParameter("preferenceRappel");
-    
-    String preferenceLundi = req.getParameter("preferenceLundi");
-    
-    String preferenceMardi = req.getParameter("preferenceMardi");
-    
-    String preferenceMercredi = req.getParameter("preferenceMercredi");
-    
-    String preferenceJeudi = req.getParameter("preferenceJeudi");
-    
-    String preferenceVendredi = req.getParameter("preferenceVendredi");
-    
+    String preferenceLundi = req.getParameter("preferenceLundi");    
+    String preferenceMardi = req.getParameter("preferenceMardi");   
+    String preferenceMercredi = req.getParameter("preferenceMercredi");   
+    String preferenceJeudi = req.getParameter("preferenceJeudi");   
+    String preferenceVendredi = req.getParameter("preferenceVendredi");   
     String preferenceSamedi = req.getParameter("preferenceSamedi");
-
-    String preferenceMatin = req.getParameter("preferenceMatin");
-    
+    String preferenceMatin = req.getParameter("preferenceMatin");   
     String preferenceAprem = req.getParameter("preferenceAprem");
+
+    //On remplace les caracteres dangereux recus dans le formulaire
+    nom.replace('\'',' ');
+    nom.replace('"',' ');
+    nom.replace('<',' ');
+    nom.replace('>',' ');
+    prenom.replace('\'',' ');
+    prenom.replace('"',' ');
+    prenom.replace('<',' ');
+    prenom.replace('>',' ');
+    email.replace('\'',' ');
+    email.replace('"',' ');
+    email.replace('<',' ');
+    email.replace('>',' ');
+    telephone.replace('\'',' ');
+    telephone.replace('"',' ');
+    telephone.replace('<',' ');
+    telephone.replace('>',' ');
+    preferenceRappel.replace('\'',' ');
+    preferenceRappel.replace('"',' ');
+    preferenceRappel.replace('<',' ');
+    preferenceRappel.replace('>',' ');
+    preferenceLundi.replace('\'',' ');
+    preferenceLundi.replace('"',' ');
+    preferenceLundi.replace('<',' ');
+    preferenceLundi.replace('>',' ');
+    preferenceMardi.replace('\'',' ');
+    preferenceMardi.replace('"',' ');
+    preferenceMardi.replace('<',' ');
+    preferenceMardi.replace('>',' ');
+    preferenceMercredi.replace('\'',' ');
+    preferenceMercredi.replace('"',' ');
+    preferenceMercredi.replace('<',' ');
+    preferenceMercredi.replace('>',' ');
+    preferenceJeudi.replace('\'',' ');
+    preferenceJeudi.replace('"',' ');
+    preferenceJeudi.replace('<',' ');
+    preferenceJeudi.replace('>',' ');
+    preferenceVendredi.replace('\'',' ');
+    preferenceVendredi.replace('"',' ');
+    preferenceVendredi.replace('<',' ');
+    preferenceVendredi.replace('>',' ');
+    preferenceSamedi.replace('\'',' ');
+    preferenceSamedi.replace('"',' ');
+    preferenceSamedi.replace('<',' ');
+    preferenceSamedi.replace('>',' ');
+    preferenceMatin.replace('\'',' ');
+    preferenceMatin.replace('"',' ');
+    preferenceMatin.replace('<',' ');
+    preferenceMatin.replace('>',' ');
+    preferenceAprem.replace('\'',' ');
+    preferenceAprem.replace('"',' ');
+    preferenceAprem.replace('<',' ');
+    preferenceAprem.replace('>',' ');
+
 
     boolean correct = true; 
     int id = 1;
-
+    int idrdv = 0;
     int idjava = 0;
     String nomjava = null;
     String prenomjava = null;
     String emailjava = null;
     String telephonejava = null;
     String preferenceRappeljava = null;
-
-    int idrdv = 0;
     String prefMatin = null;
     String prefAprem = null;
     String prefLundi = null;
@@ -57,6 +100,8 @@ public class ResultFormUser extends HttpServlet{
     String prefJeudi = null;
     String prefVendredi = null;
     String prefSamedi = null;
+
+    PrintWriter out = res.getWriter();
 
     out.println("<!doctype html>");
     out.println("<html lang=\"fr\">");
@@ -87,6 +132,7 @@ public class ResultFormUser extends HttpServlet{
     out.println("<li>Nom : " + nom + "</li>");
     out.println("<li>Pr&eacute;nom : "+ prenom + "</li>");
     
+
     if(!email.equals("")){
       out.println("<li>Email : " + email + "</li>");
     }
@@ -274,7 +320,7 @@ catch (SQLException ex) {
  out.println("Erreur de r&eacute;cup&eacute;ration dans la base de donn&eacute;es");
 }
 try{
-          // On ferme les connexions au ResultSet, Statement et à la base
+  // On ferme les connexions au ResultSet, Statement et à la base
   rs.close();
   stat.close();
   conn.close();

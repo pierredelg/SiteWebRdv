@@ -5,7 +5,9 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import java.sql.*;
 import java.util.*;
-
+/*
+Servlet permettant de rafraichir la page des résultats de rendez-vous coté Administrateur
+*/
 @WebServlet("/refreshBDD")
 public class RefreshHistoriqueOwner extends HttpServlet
 {
