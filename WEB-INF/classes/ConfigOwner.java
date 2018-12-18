@@ -117,7 +117,7 @@ public class ConfigOwner extends HttpServlet
        out.println("<li><a href=\"http://localhost:8080/projetWeb/configowner.html\">Configuration</a></li>");
        out.println("<li><a href=\"http://localhost:8080/projetWeb/historiqueOwner\">Rendez-vous</a></li>");
        out.println("<li><a href=\"http://localhost:8080/projetWeb/changedPassOwner.html\">Mot de passe</a></li>");
-       out.println("<li><a href=\"http://localhost:8080/projetWeb/login.html\">Déconnexion</a></li>");
+       out.println("<li><a href=\"http://localhost:8080/projetWeb/login.html\">D&eacute;connexion</a></li>");
        out.println("</ul>");
        out.println("</nav>");
        out.println("</header>");
