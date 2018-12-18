@@ -21,7 +21,9 @@ public class MakeUserIndex extends HttpServlet
         PrintWriter out = res.getWriter();
 
         try {
+
             // On déclare le type de driver JDBC et le chemin d’accès à la base
+            Class.forName("org.sqlite.JDBC");
             String dbURL = "jdbc:sqlite:../webapps/projetWeb/BDD/data.db";
 
             //On essaye de se connecter à la base
