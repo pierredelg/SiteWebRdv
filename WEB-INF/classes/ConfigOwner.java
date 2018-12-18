@@ -30,14 +30,14 @@ public class ConfigOwner extends HttpServlet
        String horaireDimanche = req.getParameter("horaireDimanche");
 
        //On remplace les caracteres dangereux recus dans le formulaire
-       nomEntreprise.replace('\'',' ');
-       nomEntreprise.replace('"',' ');
-       nomEntreprise.replace('<',' ');
-       nomEntreprise.replace('>',' ');
-       adresseEntreprise.replace('\'',' ');
-       adresseEntreprise.replace('"',' ');
-       adresseEntreprise.replace('<',' ');
-       adresseEntreprise.replace('>',' ');
+       nomEntreprise.replace("\'"," ");
+       nomEntreprise.replace("\""," ");
+       nomEntreprise.replace("<"," ");
+       nomEntreprise.replace(">"," ");
+       adresseEntreprise.replace("\'"," ");
+       adresseEntreprise.replace("\""," ");
+       adresseEntreprise.replace("<"," ");
+       adresseEntreprise.replace(">"," ");
        emailEntreprise.replace('\'',' ');
        emailEntreprise.replace('"',' ');
        emailEntreprise.replace('<',' ');
