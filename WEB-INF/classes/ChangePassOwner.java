@@ -14,13 +14,15 @@ public class ChangePassOwner extends HttpServlet
     public void service( HttpServletRequest req, HttpServletResponse res ) 
 	throws ServletException, IOException
     {
-
+   	//On récupere les informations des textfields
 	String identifiant = req.getParameter("identifiant");
 	String password = req.getParameter("password");
+
 	String id = "";
 	String pass = "";
 
-	PrintWriter out = res.getWriter();  
+	PrintWriter out = res.getWriter(); 
+
 	res.setContentType( "text/html" );
 	out.println("<!doctype html>");
 	out.println("<head> <meta charset=utf-8/>");
@@ -40,6 +42,7 @@ public class ChangePassOwner extends HttpServlet
 		// le resultat du select est mis dans un ResultSet
 		ResultSet rs = stat.executeQuery( "SELECT * FROM utilisateurs;" );
 		
+		//On recupere l'identifiant et le mot de passe de la base de donnée et on les remplace par les nouvelles données
 		while(rs.next()){
 		    id = rs.getString("identifiant");
 		    pass = rs.getString("password");

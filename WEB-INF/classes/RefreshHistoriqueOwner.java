@@ -33,7 +33,7 @@ public class RefreshHistoriqueOwner extends HttpServlet
 		// un Statement est une interface qui représente une instruction SQL
 		Statement stat = conn.createStatement();
 		
-		//Requete permettant de selectionner les données de la table par numero de téléphone
+		//Requete permettant de selectionner les données de la table par numero de téléphone 
 		String tel = "SELECT TEL FROM CLIENTS INNER JOIN RDV on CLIENTS.ID = RDV.IDCLIENT ORDER BY ID DESC";
 		ResultSet rs = stat.executeQuery(tel);
 		while(rs.next()){

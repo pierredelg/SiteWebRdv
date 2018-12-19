@@ -17,7 +17,9 @@ public class ResultOwner extends HttpServlet
 
 	String nom="";
 	int i = 0;
-	PrintWriter out = res.getWriter();  
+	
+	PrintWriter out = res.getWriter();
+
 	res.setContentType( "text/html" );
 	out.println("<!doctype html>");
 	out.println("<html>");

@@ -119,6 +119,7 @@ public class ResultFormUser extends HttpServlet{
     out.println("<li>Nom : " + nom + "</li>");
     out.println("<li>Pr&eacute;nom : "+ prenom + "</li>");
     
+    //On affiche sur la page uniquement les données renseignées par le client dans le formulaire
 
     if(!email.equals("")){
       out.println("<li>Email : " + email + "</li>");
