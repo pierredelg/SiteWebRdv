@@ -45,43 +45,7 @@ public class ResultFormUser extends HttpServlet{
     telephone = telephone.replace('"',' ');
     telephone = telephone.replace('<',' ');
     telephone = telephone.replace('>',' ');
-    preferenceRappel = preferenceRappel.replace('\'',' ');
-    preferenceRappel = preferenceRappel.replace('"',' ');
-    preferenceRappel = preferenceRappel.replace('<',' ');
-    preferenceRappel = preferenceRappel.replace('>',' ');
-    preferenceLundi = preferenceLundi.replace('\'',' ');
-    preferenceLundi = preferenceLundi.replace('"',' ');
-    preferenceLundi = preferenceLundi.replace('<',' ');
-    preferenceLundi = preferenceLundi.replace('>',' ');
-    preferenceMardi = preferenceMardi.replace('\'',' ');
-    preferenceMardi = preferenceMardi.replace('"',' ');
-    preferenceMardi = preferenceMardi.replace('<',' ');
-    preferenceMardi = preferenceMardi.replace('>',' ');
-    preferenceMercredi = preferenceMercredi.replace('\'',' ');
-    preferenceMercredi = preferenceMercredi.replace('"',' ');
-    preferenceMercredi = preferenceMercredi.replace('<',' ');
-    preferenceMercredi = preferenceMercredi.replace('>',' ');
-    preferenceJeudi = preferenceJeudi.replace('\'',' ');
-    preferenceJeudi = preferenceJeudi.replace('"',' ');
-    preferenceJeudi = preferenceJeudi.replace('<',' ');
-    preferenceJeudi = preferenceJeudi.replace('>',' ');
-    preferenceVendredi = preferenceVendredi.replace('\'',' ');
-    preferenceVendredi = preferenceVendredi.replace('"',' ');
-    preferenceVendredi = preferenceVendredi.replace('<',' ');
-    preferenceVendredi = preferenceVendredi.replace('>',' ');
-    preferenceSamedi = preferenceSamedi.replace('\'',' ');
-    preferenceSamedi = preferenceSamedi.replace('"',' ');
-    preferenceSamedi = preferenceSamedi.replace('<',' ');
-    preferenceSamedi = preferenceSamedi.replace('>',' ');
-    preferenceMatin = preferenceMatin.replace('\'',' ');
-    preferenceMatin = preferenceMatin.replace('"',' ');
-    preferenceMatin = preferenceMatin.replace('<',' ');
-    preferenceMatin = preferenceMatin.replace('>',' ');
-    preferenceAprem = preferenceAprem.replace('\'',' ');
-    preferenceAprem = preferenceAprem.replace('"',' ');
-    preferenceAprem = preferenceAprem.replace('<',' ');
-    preferenceAprem = preferenceAprem.replace('>',' ');
-
+   
 
     boolean correct = true; 
     int idjava = 0;
@@ -119,7 +83,6 @@ public class ResultFormUser extends HttpServlet{
     out.println("<li>Nom : " + nom + "</li>");
     out.println("<li>Pr&eacute;nom : "+ prenom + "</li>");
     
-    //On affiche sur la page uniquement les données renseignées par le client dans le formulaire
 
     if(!email.equals("")){
       out.println("<li>Email : " + email + "</li>");
